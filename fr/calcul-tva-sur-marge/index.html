@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calcul de la TVA sur marge : formule et exemples</title>
+<meta name="description" content="Comment calculer la TVA sur marge des biens d’occasion pas à pas : la formule, des exemples avec marge positive et négative, un trimestre complet et le coefficient 0,833 du BOFiP. Testez le calcul avec vos montants.">
+<link rel="canonical" href="https://lanabes.github.io/rebu-prestashop/fr/calcul-tva-sur-marge/">
+<link rel="alternate" hreflang="fr" href="https://lanabes.github.io/rebu-prestashop/fr/calcul-tva-sur-marge/">
+<link rel="alternate" hreflang="es" href="https://lanabes.github.io/rebu-prestashop/iva-rebu-ejemplo/">
+<meta name="theme-color" content="#F5F0E6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1512" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="TVA sur marge · biens d’occasion">
+<meta property="og:title" content="Calcul de la TVA sur marge : formule et exemples">
+<meta property="og:description" content="La formule avec des chiffres : une pièce, une vente à perte et un trimestre complet. Avec un calcul pas à pas pour tester les vôtres.">
+<meta property="og:url" content="https://lanabes.github.io/rebu-prestashop/fr/calcul-tva-sur-marge/">
+<meta property="og:image" content="https://lanabes.github.io/rebu-prestashop/img/og-fr.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Calcul de la TVA sur marge : formule et exemples",
+      "inLanguage": "fr",
+      "url": "https://lanabes.github.io/rebu-prestashop/fr/calcul-tva-sur-marge/",
+      "datePublished": "2026-10-03",
+      "dateModified": "2026-10-03",
+      "author": { "@type": "Organization", "name": "lanabes" },
+      "about": ["Régime de la marge", "TVA", "Biens d’occasion"]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Comment calculer la TVA sur marge ?", "acceptedAnswer": { "@type": "Answer", "text": "En trois étapes. Marge TTC = prix de vente − prix d’achat. Base HT = marge TTC divisée par 1 + taux (1,20 au taux normal). TVA = base HT × taux. Une pièce achetée 300 € et revendue 450 € donne une marge de 150 €, une base de 125 € et une TVA de 25 €." } },
+        { "@type": "Question", "name": "Quelle est la formule de la TVA sur marge ?", "acceptedAnswer": { "@type": "Answer", "text": "TVA = (prix de vente − prix d’achat) / (1 + taux) × taux. Au taux normal de 20 %, cela revient à (vente − achat) / 1,20 × 20 %, soit un sixième de la marge TTC." } },
+        { "@type": "Question", "name": "La marge se calcule-t-elle TTC ou HT ?", "acceptedAnswer": { "@type": "Answer", "text": "La marge se calcule d’abord TTC : prix de vente TVA comprise moins prix d’achat. On en retire ensuite la TVA qu’elle contient pour obtenir la base HT, sur laquelle on applique le taux." } },
+        { "@type": "Question", "name": "Que se passe-t-il en cas de marge négative ?", "acceptedAnswer": { "@type": "Answer", "text": "En cas de vente à perte, la base est nulle : il n’y a pas de TVA sur cette vente. Cette perte ne s’impute pas sur les autres ventes (BOFiP BOI-TVA-SECT-90-20, § 250)." } },
+        { "@type": "Question", "name": "Pourquoi le BOFiP parle-t-il d’un coefficient de 0,833 ?", "acceptedAnswer": { "@type": "Answer", "text": "Diviser par 1,20 revient à multiplier par 0,8333… Le BOFiP (BOI-TVA-SECT-90-20, § 290) ramène la marge hors taxe avec le coefficient arrondi 0,833 ; l’écart avec la division exacte est de quelques centimes au plus." } }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="TVA sur marge, biens d’occasion : accueil">
+      <svg viewBox="0 0 1000 1000" aria-hidden="true"><rect width="1000" height="1000" rx="220" fill="#1F4436"/><path d="M439 175h122q14 0 22 11.5l155.5 222.1Q750 425 750 445v335q0 45-45 45H295q-45 0-45-45V445q0-20 11.5-36.4L417 186.5q8-11.5 22-11.5Z" fill="#F2EBDC"/><circle cx="500" cy="237.5" r="37.5" fill="#1F4436"/><rect x="350" y="500" width="300" height="75" rx="37.5" fill="#1F4436"/><rect x="350" y="650" width="175" height="75" rx="37.5" fill="#1F4436"/></svg>
+      TVA sur marge <span>biens d’occasion</span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="../facture-tva-sur-marge/">Facture</a>
+      <a href="../#guide" class="hide-sm">PrestaShop</a>
+      <a href="../calculatrice/">Calculatrice</a>
+      <a href="../../iva-rebu-ejemplo/" class="lang" hreflang="es" lang="es" aria-label="Versión en español">ES</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <section class="calc-head">
+    <div class="wrap">
+      <h1>Calcul de la TVA sur marge&nbsp;: formule et exemples</h1>
+      <p class="lead">Le régime de la marge des biens d’occasion, chiffres à l’appui&nbsp;: une pièce, une vente à perte et un trimestre complet. Et un calcul pas à pas pour tester les vôtres.</p>
+      <p class="answer"><svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#info"/></svg><span><strong>En une phrase&nbsp;:</strong> vous retirez le prix d’achat du prix de vente&nbsp;; de cette marge, vous retirez la TVA qu’elle contient déjà (au taux normal, en divisant par 1,20), et la TVA à déclarer est 20&nbsp;% de ce qui reste.</span></p>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="walk-t">
+    <div class="walk" id="walk">
+      <div class="walk-in">
+        <h2 id="walk-t">Essayez avec vos montants</h2>
+        <p>Modifiez les montants et suivez chaque étape avec vos chiffres.</p>
+        <div class="walk-field">
+          <label for="w-buy">Prix d’achat</label>
+          <span class="money"><input id="w-buy" inputmode="decimal" autocomplete="off" value="300" aria-describedby="w-err"><span aria-hidden="true">€</span></span>
+        </div>
+        <div class="walk-field">
+          <label for="w-sell">Prix de vente (TTC)</label>
+          <span class="money"><input id="w-sell" inputmode="decimal" autocomplete="off" value="450" aria-describedby="w-err"><span aria-hidden="true">€</span></span>
+        </div>
+        <div class="walk-field">
+          <span id="w-rate-l">Taux de TVA du bien</span>
+          <div class="segmented" role="group" aria-labelledby="w-rate-l">
+            <button type="button" data-rate="20" aria-pressed="true">20&nbsp;%</button>
+            <button type="button" data-rate="10" aria-pressed="false">10&nbsp;%</button>
+            <button type="button" data-rate="5.5" aria-pressed="false">5,5&nbsp;%</button>
+          </div>
+        </div>
+        <div class="walk-field">
+          <span id="w-ex-l">Ou chargez un exemple</span>
+          <div class="chips" role="group" aria-labelledby="w-ex-l">
+            <button type="button" data-buy="300" data-sell="450" data-rate="20" aria-pressed="true">Pièce avec marge</button>
+            <button type="button" data-buy="200" data-sell="150" data-rate="20" aria-pressed="false">Vendue à perte</button>
+            <button type="button" data-buy="12" data-sell="30" data-rate="20" aria-pressed="false">Petit objet</button>
+          </div>
+        </div>
+        <p class="walk-err" id="w-err" role="alert" hidden></p>
+      </div>
+
+      <div class="walk-out">
+        <h3>Le calcul, étape par étape</h3>
+        <ol class="walk-steps">
+          <li><span class="n" aria-hidden="true">1</span><div><b>Marge TTC</b><span class="f" id="w-f1">450,00 − 300,00</span></div><output id="w-r1" for="w-buy w-sell">150,00 €</output></li>
+          <li><span class="n" aria-hidden="true">2</span><div><b>Base HT</b><span class="f" id="w-f2">150,00 / 1,20</span></div><output id="w-r2">125,00 €</output></li>
+          <li class="total"><span class="n" aria-hidden="true">3</span><div><b>TVA à déclarer</b><span class="f" id="w-f3">125,00 × 20&nbsp;%</span></div><output id="w-r3" aria-live="polite">25,00 €</output></li>
+        </ol>
+        <p class="walk-neg" id="w-neg" hidden>Cette perte ne s’impute pas sur les autres ventes.</p>
+        <div class="walk-compare" aria-label="Comparaison">
+          <div class="walk-bar"><span>TVA sur le prix total</span><b id="w-full">75,00 €</b><i id="w-full-bar" style="--w:100%"></i></div>
+          <div class="walk-bar rebu"><span>TVA sur la marge</span><b id="w-rebu">25,00 €</b><i id="w-rebu-bar" style="--w:33.33%"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <article class="prose">
+        <h2 id="formule">La formule, en trois étapes</h2>
+        <ol>
+          <li><strong>Marge TTC</strong> = prix de vente − prix d’achat. C’est cette différence qui sert de base au régime de la marge (article 297 A du CGI), et elle contient encore la TVA.</li>
+          <li><strong>Base HT</strong> = marge TTC / (1 + taux). Au taux normal, la marge divisée par 1,20. La marge contient déjà la TVA&nbsp;: cette étape la retire.</li>
+          <li><strong>TVA à déclarer</strong> = base HT × taux.</li>
+        </ol>
+        <p>Le BOFiP (BOI-TVA-SECT-90-20, §&nbsp;290) ramène la marge hors taxe avec le coefficient arrondi <strong>0,833</strong>, qui correspond à la division par 1,20. L’écart avec la division exacte est de quelques centimes au plus&nbsp;; la calculatrice fait la division exacte.</p>
+        <div class="note" role="note">
+          <svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#alert"/></svg>
+          <div><p><strong>L’erreur la plus courante&nbsp;: appliquer 20&nbsp;% directement à la marge.</strong> Avec 150&nbsp;€ de marge, on obtient 30,00&nbsp;€ au lieu de 25,00&nbsp;€&nbsp;: c’est calculer de la TVA aussi sur la TVA que la marge contient déjà.</p></div>
+        </div>
+
+        <h2 id="exemple-1">Exemple 1&nbsp;: une pièce avec marge</h2>
+        <p>Vous achetez un appareil photo 300&nbsp;€ à un particulier et le revendez 450&nbsp;€, au taux normal de 20&nbsp;%.</p>
+        <dl class="example" aria-label="Exemple au taux de 20&nbsp;%">
+          <div><dt>Achetée</dt><dd>300,00 €</dd></div>
+          <div><dt>Revendue</dt><dd>450,00 €</dd></div>
+          <div><dt>Marge TTC</dt><dd>150,00 €<span class="op">450 − 300</span></dd></div>
+          <div><dt>Base HT</dt><dd>125,00 €<span class="op">150 / 1,20</span></dd></div>
+          <div class="hl"><dt>TVA à déclarer</dt><dd>25,00 €<span class="op">125 × 20&nbsp;%</span></dd></div>
+        </dl>
+        <p>Sur la facture, seul le prix figure&nbsp;: 450&nbsp;€, avec la mention du régime et sans TVA apparente. Avec la TVA sur le prix total, ce serait 75,00&nbsp;€. <a href="../facture-tva-sur-marge/">À quoi ressemble cette facture, avec un modèle à remplir</a>.</p>
+
+        <h2 id="exemple-2">Exemple 2&nbsp;: une vente à perte</h2>
+        <p>Une lampe achetée 200&nbsp;€ finit par partir à 150&nbsp;€.</p>
+        <dl class="example" aria-label="Exemple avec marge négative">
+          <div><dt>Achetée</dt><dd>200,00 €</dd></div>
+          <div><dt>Revendue</dt><dd>150,00 €</dd></div>
+          <div><dt>Marge TTC</dt><dd class="neg">−50,00 €<span class="op">150 − 200</span></dd></div>
+          <div><dt>Base HT</dt><dd>0,00 €<span class="op">marge négative</span></dd></div>
+          <div class="hl"><dt>TVA à déclarer</dt><dd>0,00 €</dd></div>
+        </dl>
+        <p>En cas de vente à perte, la base est nulle et <strong>ne s’impute pas sur les autres ventes</strong> (BOFiP BOI-TVA-SECT-90-20, §&nbsp;250). La perte ne réduit donc pas la TVA due sur les autres pièces du trimestre.</p>
+
+        <h2 id="exemple-3">Exemple 3&nbsp;: un trimestre complet</h2>
+        <p>Quatre ventes d’une boutique d’occasion sur un trimestre, toutes au taux normal. La lampe est partie à perte.</p>
+        <div class="table-wrap">
+          <table class="data">
+            <caption class="sr-only">Ventes du trimestre d’exemple</caption>
+            <thead><tr><th scope="col">Pièce</th><th scope="col" class="r">Achat</th><th scope="col" class="r">Vente</th><th scope="col" class="r">Marge</th><th scope="col" class="r">Base HT</th></tr></thead>
+            <tbody>
+              <tr><td>Veste en cuir vintage</td><td class="r">40,00 €</td><td class="r">95,00 €</td><td class="r">55,00 €</td><td class="r">45,83 €</td></tr>
+              <tr><td>iPhone 12 reconditionné</td><td class="r">180,00 €</td><td class="r">260,00 €</td><td class="r">80,00 €</td><td class="r">66,67 €</td></tr>
+              <tr><td>Lampe en laiton</td><td class="r">120,00 €</td><td class="r">100,00 €</td><td class="r neg">−20,00 €</td><td class="r">0,00 €</td></tr>
+              <tr><td>Montre mécanique</td><td class="r">60,00 €</td><td class="r">110,00 €</td><td class="r">50,00 €</td><td class="r">41,67 €</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <dl class="quarter" aria-label="Récapitulatif du trimestre">
+          <div><dt>Au taux de 20&nbsp;% · 4 ventes</dt><dd><span>Base HT <strong>154,17 €</strong></span><span>TVA <strong>30,83 €</strong></span></dd></div>
+        </dl>
+        <p>La lampe apporte une base nulle et ne retranche rien. Les opérations de chaque régime se suivent en comptabilité séparément et par taux (BOFiP BOI-TVA-SECT-90-80)&nbsp;: la calculatrice donne la base HT et la TVA du trimestre par taux.</p>
+        <p class="ctas-inline"><a class="btn" href="../calculatrice/">Calculer mon trimestre <svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#arrow-right"/></svg></a></p>
+
+        <h2 id="prix-achat">Des pièces identiques achetées à des prix différents</h2>
+        <p>La marge se calcule pièce par pièce&nbsp;: chaque vente reprend le prix d’achat de cette pièce-là, pas une moyenne. Trois téléphones identiques achetés 150, 170 et 190&nbsp;€ ont chacun leur marge. D’où l’intérêt de rattacher chaque pièce à son justificatif d’achat, et de pouvoir corriger le prix d’achat vente par vente dans la calculatrice.</p>
+
+        <h2 id="occasion">Vêtements, téléphones, pièces d’occasion&nbsp;: le même calcul</h2>
+        <p>La formule est la même pour tous les biens d’occasion. Ce qui décide si une pièce peut relever du régime de la marge, ce n’est pas sa nature mais <strong>la personne qui vous l’a vendue</strong> (article 297 A du CGI). Les objets d’art, de collection et d’antiquité ont leur propre mention sur la facture.</p>
+
+        <h2 id="declaration">Et la déclaration&nbsp;?</h2>
+        <p>La calculatrice vous donne, par taux, la base HT et la TVA du trimestre, et un registre pièce par pièce. Pour savoir sur quelle ligne de votre déclaration (CA3 ou CA12) reporter chaque montant, voyez avec votre expert-comptable&nbsp;: nous ne l’indiquons pas tant que nous n’avons pas la source officielle.</p>
+        <div class="note" role="note">
+          <svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#info"/></svg>
+          <div><p><strong>Les références changent le 1<sup>er</sup> janvier 2027.</strong> L’ordonnance n°&nbsp;2025-1247 transfère la TVA du CGI vers le code des impositions sur les biens et services, avec une nouvelle numérotation. Le calcul, lui, ne change pas.</p></div>
+        </div>
+
+        <div class="note warn" role="note">
+          <svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#alert"/></svg>
+          <div><p><strong>Cette page explique le calcul&nbsp;; ce n’est pas un conseil fiscal.</strong> Appliquer le régime, choisir les pièces qui en relèvent et le déclarer relèvent de vous et de votre expert-comptable.</p></div>
+        </div>
+
+        <h2 id="questions">Questions fréquentes</h2>
+        <div class="faq">
+          <details>
+            <summary>Comment calculer la TVA sur marge&nbsp;?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>En trois étapes. Marge TTC = prix de vente − prix d’achat. Base HT = marge TTC divisée par 1 + taux (1,20 au taux normal). TVA = base HT × taux. Une pièce achetée 300&nbsp;€ et revendue 450&nbsp;€ donne une marge de 150&nbsp;€, une base de 125&nbsp;€ et une TVA de 25&nbsp;€.</p></div>
+          </details>
+          <details>
+            <summary>Quelle est la formule de la TVA sur marge&nbsp;?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>TVA = (prix de vente − prix d’achat) / (1 + taux) × taux. Au taux normal de 20&nbsp;%, cela revient à (vente − achat) / 1,20 × 20&nbsp;%, soit un sixième de la marge TTC.</p></div>
+          </details>
+          <details>
+            <summary>La marge se calcule-t-elle TTC ou HT&nbsp;?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>La marge se calcule d’abord TTC&nbsp;: prix de vente TVA comprise moins prix d’achat. On en retire ensuite la TVA qu’elle contient pour obtenir la base HT, sur laquelle on applique le taux.</p></div>
+          </details>
+          <details>
+            <summary>Que se passe-t-il en cas de marge négative&nbsp;?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>En cas de vente à perte, la base est nulle&nbsp;: il n’y a pas de TVA sur cette vente. Cette perte ne s’impute pas sur les autres ventes (BOFiP BOI-TVA-SECT-90-20, §&nbsp;250).</p></div>
+          </details>
+          <details>
+            <summary>Pourquoi le BOFiP parle-t-il d’un coefficient de 0,833&nbsp;?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>Diviser par 1,20 revient à multiplier par 0,8333… Le BOFiP (BOI-TVA-SECT-90-20, §&nbsp;290) ramène la marge hors taxe avec le coefficient arrondi 0,833&nbsp;; l’écart avec la division exacte est de quelques centimes au plus.</p></div>
+          </details>
+        </div>
+
+        <h2 id="boutique">Vous vendez en ligne&nbsp;?</h2>
+        <p>La <a href="../calculatrice/">calculatrice</a> fait ce calcul pour toutes les ventes du trimestre à partir d’un fichier de votre boutique ou de pièces saisies à la main, et vous donne le registre. Si votre boutique tourne sous PrestaShop, le <a href="../#guide">guide pas à pas</a> explique comment la configurer pour le régime de la marge.</p>
+        <p class="muted">Sources&nbsp;: CGI, article 297 A&nbsp;; BOFiP BOI-TVA-SECT-90-20 (§&nbsp;250 et §&nbsp;290) et BOI-TVA-SECT-90-80&nbsp;; ordonnance n°&nbsp;2025-1247. Vérifié le 3 octobre 2026.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="modulo" aria-labelledby="modulo-t" hidden>
+    <div class="wrap">
+      <div class="waitlist">
+        <div>
+          <h2 id="modulo-t">Et si votre boutique le faisait toute seule&nbsp;?</h2>
+          <p>Nous mesurons l’intérêt pour un outil pour votre boutique en ligne qui calcule la marge de chaque vente, établisse les factures sur marge et tienne le registre sans bricolage. Dites-nous avec quoi vous vendez&nbsp;: nous le ferons pour la plateforme la plus demandée.</p>
+          <a class="btn" id="waitlist-link" href="#" rel="noopener">Prévenez-moi à sa sortie <svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#arrow-right"/></svg></a>
+          <small>Seuls l’e-mail et votre outil de vente sont obligatoires&nbsp;: ils servent à vous prévenir une fois, et sont supprimés si l’outil ne voit pas le jour. Responsable&nbsp;: Rubén Blánquez. Pour les supprimer avant, revenez au formulaire et choisissez «&nbsp;Supprimer mes données&nbsp;». Le formulaire utilise Google Forms.</small>
+        </div>
+        <ul>
+          <li><svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#check"/></svg>La marge de chaque vente avec son propre prix d’achat.</li>
+          <li><svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#check"/></svg>Des factures sur marge correctes, sans TVA apparente ni colonne «&nbsp;0&nbsp;%&nbsp;».</li>
+          <li><svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#check"/></svg>Le registre et le récapitulatif du trimestre, sans rien exporter.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p class="disclaimer">Outil de calcul et de documentation. Ce n’est pas un conseil fiscal&nbsp;: l’application du régime et la vérification des montants relèvent du commerçant et de son expert-comptable.</p>
+      <p>Ni cookies ni mesure d’audience. Réalisé par lanabes. Dernière révision&nbsp;: 3 octobre 2026.</p>
+    </div>
+    <nav aria-label="Pied de page">
+      <a href="../facture-tva-sur-marge/">Facture TVA sur marge</a>
+      <a href="./">Calcul et exemples</a>
+      <a href="../#guide">Guide PrestaShop</a>
+      <a href="../calculatrice/">Calculatrice</a>
+      <a href="../../iva-rebu-ejemplo/" hreflang="es" lang="es">Versión en español</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../../assets/config.js"></script>
+<script type="module" src="../../assets/paso.js"></script>
+<script type="module" src="../../assets/waitlist.js"></script>
+</body>
+</html>

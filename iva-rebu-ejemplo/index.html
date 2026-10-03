@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IVA del REBU: cómo se calcula, con ejemplos prácticos</title>
+<meta name="description" content="Cómo calcular el IVA del régimen especial de bienes usados (REBU) paso a paso: la fórmula, ejemplos prácticos con margen positivo y negativo, un trimestre completo y cómo va al modelo 303. Prueba el cálculo con tus cifras.">
+<link rel="canonical" href="https://lanabes.github.io/rebu-prestashop/iva-rebu-ejemplo/">
+<link rel="alternate" hreflang="es" href="https://lanabes.github.io/rebu-prestashop/iva-rebu-ejemplo/">
+<link rel="alternate" hreflang="fr" href="https://lanabes.github.io/rebu-prestashop/fr/calcul-tva-sur-marge/">
+<meta name="theme-color" content="#F5F0E6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1512" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="REBU · IVA sobre el margen">
+<meta property="og:title" content="IVA del REBU: cómo se calcula, con ejemplos">
+<meta property="og:description" content="La fórmula con cifras: una pieza, una venta con pérdida y un trimestre entero. Con un cálculo paso a paso para probar las tuyas.">
+<meta property="og:url" content="https://lanabes.github.io/rebu-prestashop/iva-rebu-ejemplo/">
+<meta property="og:image" content="https://lanabes.github.io/rebu-prestashop/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "IVA del REBU: cómo se calcula, con ejemplos prácticos",
+      "inLanguage": "es",
+      "url": "https://lanabes.github.io/rebu-prestashop/iva-rebu-ejemplo/",
+      "datePublished": "2026-10-03",
+      "dateModified": "2026-10-03",
+      "author": { "@type": "Organization", "name": "lanabes" },
+      "about": ["Régimen especial de bienes usados", "IVA", "Margen de beneficio"]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "¿Cómo se calcula el IVA del REBU?", "acceptedAnswer": { "@type": "Answer", "text": "En tres pasos. Margen = precio de venta − precio de compra, los dos con IVA. Base imponible = margen × 100 / (100 + tipo); al 21 %, el margen dividido entre 1,21. IVA a declarar = base × tipo. Una pieza comprada por 300 € y vendida por 450 € da 150 € de margen, 123,97 € de base y 26,03 € de IVA." } },
+        { "@type": "Question", "name": "¿El margen del REBU se calcula con IVA o sin IVA?", "acceptedAnswer": { "@type": "Answer", "text": "Con IVA: precio de venta y precio de compra tal como se cobran y se pagan, IVA incluido. Después se quita del margen el IVA que lleva dentro, y lo que queda es la base imponible (Ley 37/1992 del IVA, artículo 137)." } },
+        { "@type": "Question", "name": "¿Qué pasa si vendo una pieza por menos de lo que me costó?", "acceptedAnswer": { "@type": "Answer", "text": "El margen es negativo y la base de esa venta es cero: no pagas IVA por ella. Con el método de operación a operación, que es el general, esa pérdida no se resta de las demás ventas." } },
+        { "@type": "Question", "name": "¿Por qué no se multiplica el margen por el 21 %?", "acceptedAnswer": { "@type": "Answer", "text": "Porque el margen ya lleva el IVA dentro. Multiplicar 150 € por el 21 % da 31,50 €, que es IVA calculado también sobre el propio IVA. Lo correcto es sacar primero la base (150 / 1,21 = 123,97 €) y aplicarle el 21 %: 26,03 €." } },
+        { "@type": "Question", "name": "¿En qué casillas del modelo 303 va el REBU?", "acceptedAnswer": { "@type": "Answer", "text": "El modelo 303 no tiene casillas aparte para la base del REBU de cada trimestre: en el IVA devengado, las casillas 01 a 09 recogen bases y cuotas por tipo (4, 10 y 21 %). La única casilla propia del REBU es la 97, con el total anual sin IVA de las ventas en REBU; solo la rellena, en la última declaración del año, quien no presenta el resumen anual (modelo 390). Dónde va cada cifra en tu caso, confírmalo con tu asesor." } }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="REBU, IVA sobre el margen: inicio">
+      <svg viewBox="0 0 1000 1000" aria-hidden="true"><rect width="1000" height="1000" rx="220" fill="#1F4436"/><path d="M439 175h122q14 0 22 11.5l155.5 222.1Q750 425 750 445v335q0 45-45 45H295q-45 0-45-45V445q0-20 11.5-36.4L417 186.5q8-11.5 22-11.5Z" fill="#F2EBDC"/><circle cx="500" cy="237.5" r="37.5" fill="#1F4436"/><rect x="350" y="500" width="300" height="75" rx="37.5" fill="#1F4436"/><rect x="350" y="650" width="175" height="75" rx="37.5" fill="#1F4436"/></svg>
+      REBU <span>IVA sobre el margen</span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="../factura-rebu/">Factura</a>
+      <a href="../#guia" class="hide-sm">PrestaShop</a>
+      <a href="../calculadora/">Calculadora</a>
+      <a href="../fr/calcul-tva-sur-marge/" class="lang" hreflang="fr" lang="fr" aria-label="Version française">FR</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+  <section class="calc-head">
+    <div class="wrap">
+      <h1>IVA del REBU: cómo se calcula, con ejemplos</h1>
+      <p class="lead">La fórmula del régimen especial de los bienes usados, con cifras: una pieza, una venta con pérdida y un trimestre entero. Y un cálculo paso a paso para probar las tuyas.</p>
+      <p class="answer"><svg class="i" aria-hidden="true"><use href="../assets/icons.svg#info"/></svg><span><strong>En una frase:</strong> a lo que cobras por la pieza le restas lo que te costó; a ese margen le quitas el IVA que ya lleva dentro (al 21&nbsp;%, dividiendo entre 1,21), y el IVA que declaras es el 21&nbsp;% de lo que queda.</span></p>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="walk-t">
+    <div class="walk" id="walk">
+      <div class="walk-in">
+        <h2 id="walk-t">Prueba con tus cifras</h2>
+        <p>Cambia los importes y mira cada paso con tus números.</p>
+        <div class="walk-field">
+          <label for="w-buy">Te costó (con IVA, si lo pagaste)</label>
+          <span class="money"><input id="w-buy" inputmode="decimal" autocomplete="off" value="300" aria-describedby="w-err"><span aria-hidden="true">€</span></span>
+        </div>
+        <div class="walk-field">
+          <label for="w-sell">La vendes por (precio final)</label>
+          <span class="money"><input id="w-sell" inputmode="decimal" autocomplete="off" value="450" aria-describedby="w-err"><span aria-hidden="true">€</span></span>
+        </div>
+        <div class="walk-field">
+          <span id="w-rate-l">Tipo de IVA de la pieza</span>
+          <div class="segmented" role="group" aria-labelledby="w-rate-l">
+            <button type="button" data-rate="21" aria-pressed="true">21&nbsp;%</button>
+            <button type="button" data-rate="10" aria-pressed="false">10&nbsp;%</button>
+            <button type="button" data-rate="4" aria-pressed="false">4&nbsp;%</button>
+          </div>
+        </div>
+        <div class="walk-field">
+          <span id="w-ex-l">O carga un ejemplo</span>
+          <div class="chips" role="group" aria-labelledby="w-ex-l">
+            <button type="button" data-buy="300" data-sell="450" data-rate="21" aria-pressed="true">Pieza con margen</button>
+            <button type="button" data-buy="200" data-sell="150" data-rate="21" aria-pressed="false">Vendida con pérdida</button>
+            <button type="button" data-buy="8" data-sell="25" data-rate="4" aria-pressed="false">Libro al 4&nbsp;%</button>
+          </div>
+        </div>
+        <p class="walk-err" id="w-err" role="alert" hidden></p>
+      </div>
+
+      <div class="walk-out">
+        <h3>El cálculo, paso a paso</h3>
+        <ol class="walk-steps">
+          <li><span class="n" aria-hidden="true">1</span><div><b>Margen</b><span class="f" id="w-f1">450,00 − 300,00</span></div><output id="w-r1" for="w-buy w-sell">150,00 €</output></li>
+          <li><span class="n" aria-hidden="true">2</span><div><b>Base imponible</b><span class="f" id="w-f2">150,00 × 100 / 121</span></div><output id="w-r2">123,97 €</output></li>
+          <li class="total"><span class="n" aria-hidden="true">3</span><div><b>IVA a declarar</b><span class="f" id="w-f3">123,97 × 21&nbsp;%</span></div><output id="w-r3" aria-live="polite">26,03 €</output></li>
+        </ol>
+        <p class="walk-neg" id="w-neg" hidden>Con el método de operación a operación, esa pérdida no se resta de otras ventas.</p>
+        <div class="walk-compare" aria-label="Comparación">
+          <div class="walk-bar"><span>IVA sobre el precio entero</span><b id="w-full">78,10 €</b><i id="w-full-bar" style="--w:100%"></i></div>
+          <div class="walk-bar rebu"><span>IVA sobre el margen (REBU)</span><b id="w-rebu">26,03 €</b><i id="w-rebu-bar" style="--w:33.33%"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <article class="prose">
+        <h2 id="formula">La fórmula, en tres pasos</h2>
+        <ol>
+          <li><strong>Margen</strong> = precio de venta − precio de compra. Los dos con el IVA incluido, tal como cobras y como pagaste (Ley 37/1992 del IVA, artículo 137).</li>
+          <li><strong>Base imponible</strong> = margen × 100 / (100 + tipo). Al 21&nbsp;%, el margen dividido entre 1,21. El margen lleva el IVA dentro, y este paso lo saca.</li>
+          <li><strong>IVA a declarar</strong> = base imponible × tipo.</li>
+        </ol>
+        <div class="note" role="note">
+          <svg class="i" aria-hidden="true"><use href="../assets/icons.svg#alert"/></svg>
+          <div><p><strong>El error más común: multiplicar el margen por el 21&nbsp;%.</strong> Con 150 € de margen salen 31,50 €, cuando lo correcto son 26,03 €. Es IVA calculado también sobre el IVA que el margen ya lleva dentro.</p></div>
+        </div>
+
+        <h2 id="ejemplo-1">Ejemplo 1: una pieza con margen</h2>
+        <p>Compras una cámara a un particular por 300 € y la vendes por 450 €. Es del 21&nbsp;%.</p>
+        <dl class="example" aria-label="Ejemplo práctico al 21&nbsp;%">
+          <div><dt>Te costó</dt><dd>300,00 €</dd></div>
+          <div><dt>La vendes por</dt><dd>450,00 €</dd></div>
+          <div><dt>Margen</dt><dd>150,00 €<span class="op">450 − 300</span></dd></div>
+          <div><dt>Base imponible</dt><dd>123,97 €<span class="op">150 × 100 / 121</span></dd></div>
+          <div class="hl"><dt>IVA a declarar</dt><dd>26,03 €<span class="op">123,97 × 21&nbsp;%</span></dd></div>
+        </dl>
+        <p>En la factura solo aparece el precio, 450 €, con la mención del régimen y sin el IVA desglosado. Con el IVA sobre el precio entero serían 78,10 €: esa es la diferencia que hace el REBU. <a href="../factura-rebu/">Cómo es esa factura, con un modelo para rellenar</a>.</p>
+
+        <h2 id="ejemplo-2">Ejemplo 2: la vendes por menos de lo que te costó</h2>
+        <p>Una lámpara que te costó 200 € no se vende y acabas dándola por 150 €.</p>
+        <dl class="example" aria-label="Ejemplo con margen negativo">
+          <div><dt>Te costó</dt><dd>200,00 €</dd></div>
+          <div><dt>La vendes por</dt><dd>150,00 €</dd></div>
+          <div><dt>Margen</dt><dd class="neg">−50,00 €<span class="op">150 − 200</span></dd></div>
+          <div><dt>Base imponible</dt><dd>0,00 €<span class="op">margen negativo</span></dd></div>
+          <div class="hl"><dt>IVA a declarar</dt><dd>0,00 €</dd></div>
+        </dl>
+        <p>Cuando el margen es negativo, la base de esa venta es cero. Con el método de operación a operación, que es el general y el que siguen esta página y la calculadora, <strong>esa pérdida no se resta de las demás ventas</strong> del trimestre.</p>
+        <p>Para algunos bienes concretos (como sellos, monedas, libros o discos, y otros que autorice la Agencia Tributaria) existe el método de margen global, que calcula por periodos y no pieza a pieza: si el margen de un periodo sale negativo, la base es cero y ese margen se suma a las compras del periodo siguiente. Si es tu caso, háblalo con tu asesor.</p>
+
+        <h2 id="ejemplo-3">Ejemplo 3: un trimestre completo</h2>
+        <p>Cinco ventas de una tienda de segunda mano en un trimestre. Tres piezas al 21&nbsp;% y dos libros al 4&nbsp;%; la lámpara se vendió con pérdida.</p>
+        <div class="table-wrap">
+          <table class="data">
+            <caption class="sr-only">Ventas del trimestre de ejemplo</caption>
+            <thead><tr><th scope="col">Pieza</th><th scope="col" class="r">Compra</th><th scope="col" class="r">Venta</th><th scope="col" class="r">Margen</th><th scope="col" class="r">Tipo</th><th scope="col" class="r">Base</th></tr></thead>
+            <tbody>
+              <tr><td>Chaqueta de cuero vintage</td><td class="r">40,00 €</td><td class="r">95,00 €</td><td class="r">55,00 €</td><td class="r">21&nbsp;%</td><td class="r">45,45 €</td></tr>
+              <tr><td>iPhone 12 reacondicionado</td><td class="r">180,00 €</td><td class="r">260,00 €</td><td class="r">80,00 €</td><td class="r">21&nbsp;%</td><td class="r">66,12 €</td></tr>
+              <tr><td>Lámpara de latón</td><td class="r">120,00 €</td><td class="r">100,00 €</td><td class="r neg">−20,00 €</td><td class="r">21&nbsp;%</td><td class="r">0,00 €</td></tr>
+              <tr><td>Novela de segunda mano</td><td class="r">8,00 €</td><td class="r">25,00 €</td><td class="r">17,00 €</td><td class="r">4&nbsp;%</td><td class="r">16,35 €</td></tr>
+              <tr><td>Libro de cocina usado</td><td class="r">12,00 €</td><td class="r">22,00 €</td><td class="r">10,00 €</td><td class="r">4&nbsp;%</td><td class="r">9,62 €</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Las bases se suman por tipo de IVA, y la cuota de cada tipo es su base total por el tipo:</p>
+        <dl class="quarter" aria-label="Resumen del trimestre por tipo">
+          <div><dt>Al 21&nbsp;% · 3 ventas</dt><dd><span>Base <strong>111,57 €</strong></span><span>IVA <strong>23,43 €</strong></span></dd></div>
+          <div><dt>Al 4&nbsp;% · 2 ventas</dt><dd><span>Base <strong>25,97 €</strong></span><span>IVA <strong>1,04 €</strong></span></dd></div>
+        </dl>
+        <p>La lámpara aporta base cero y no resta nada. Hacer la cuota sobre la base total de cada tipo, como la pide el modelo 303 (base, tipo y cuota), puede dar un céntimo distinto de la suma pieza a pieza: al 4&nbsp;%, 1,04 € frente a 1,03 €.</p>
+        <p class="ctas-inline"><a class="btn" href="../calculadora/">Calcular mi trimestre <svg class="i" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a></p>
+
+        <h2 id="coste">Piezas iguales que te costaron distinto</h2>
+        <p>El margen es el de cada operación, así que cada venta usa el precio de compra de esa unidad, no una media. Si compras tres móviles iguales por 150, 170 y 190 €, cada uno tiene su margen. Por eso conviene identificar cada pieza con su documento de compra, y por eso la calculadora deja corregir el coste venta a venta.</p>
+
+        <h2 id="sectores">Ropa, móviles, libros, antigüedades: el mismo cálculo</h2>
+        <p>La fórmula es la misma para cualquier bien usado. Cambian dos cosas: el tipo de IVA del propio bien (el 21&nbsp;% en la mayoría; el 4&nbsp;% en los libros) y la mención de la factura en objetos de arte, antigüedades y objetos de colección. Lo que decide si una pieza puede ir por el REBU no es qué es, sino <strong>a quién se la compraste</strong> (artículo 135 de la ley).</p>
+
+        <h2 id="modelo-303">Cómo va al modelo 303</h2>
+        <p>Según las instrucciones oficiales del modelo 303:</p>
+        <ul>
+          <li>En el IVA devengado, las casillas 01 a 09 recogen las bases y cuotas por tipo (4, 10 y 21&nbsp;%). <strong>No hay casillas aparte para la base del REBU</strong> de cada trimestre.</li>
+          <li>La única casilla propia del REBU es la <strong>97</strong>: el total anual, sin IVA, de las ventas en REBU. Solo la rellena, en la última declaración del año, quien no presenta el resumen anual (modelo 390).</li>
+        </ul>
+        <p>La calculadora te da la base y la cuota del trimestre separadas por tipo. Qué cifra va en cada casilla en tu caso, confírmalo con tu asesor.</p>
+        <p>Además de declarar, el REBU pide anotar cada venta en un libro registro propio. <a href="../libro-registro-rebu/">Qué datos lleva, con una plantilla en Excel</a>.</p>
+
+        <div class="note warn" role="note">
+          <svg class="i" aria-hidden="true"><use href="../assets/icons.svg#alert"/></svg>
+          <div><p><strong>Esta página explica el cálculo; no es asesoramiento fiscal.</strong> Aplicar el régimen, decidir qué piezas van por él y declararlo os toca a ti y a tu asesor.</p></div>
+        </div>
+
+        <h2 id="preguntas">Preguntas frecuentes</h2>
+        <div class="faq">
+          <details>
+            <summary>¿Cómo se calcula el IVA del REBU?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>En tres pasos. Margen = precio de venta − precio de compra, los dos con IVA. Base imponible = margen × 100 / (100 + tipo); al 21&nbsp;%, el margen dividido entre 1,21. IVA a declarar = base × tipo. Una pieza comprada por 300 € y vendida por 450 € da 150 € de margen, 123,97 € de base y 26,03 € de IVA.</p></div>
+          </details>
+          <details>
+            <summary>¿El margen del REBU se calcula con IVA o sin IVA?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>Con IVA: precio de venta y precio de compra tal como se cobran y se pagan, IVA incluido. Después se quita del margen el IVA que lleva dentro, y lo que queda es la base imponible (Ley 37/1992 del IVA, artículo 137).</p></div>
+          </details>
+          <details>
+            <summary>¿Qué pasa si vendo una pieza por menos de lo que me costó?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>El margen es negativo y la base de esa venta es cero: no pagas IVA por ella. Con el método de operación a operación, que es el general, esa pérdida no se resta de las demás ventas.</p></div>
+          </details>
+          <details>
+            <summary>¿Por qué no se multiplica el margen por el 21&nbsp;%?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>Porque el margen ya lleva el IVA dentro. Multiplicar 150 € por el 21&nbsp;% da 31,50 €, que es IVA calculado también sobre el propio IVA. Lo correcto es sacar primero la base (150 / 1,21 = 123,97 €) y aplicarle el 21&nbsp;%: 26,03 €.</p></div>
+          </details>
+          <details>
+            <summary>¿En qué casillas del modelo 303 va el REBU?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>El modelo 303 no tiene casillas aparte para la base del REBU de cada trimestre: en el IVA devengado, las casillas 01 a 09 recogen bases y cuotas por tipo (4, 10 y 21&nbsp;%). La única casilla propia del REBU es la 97, con el total anual sin IVA de las ventas en REBU; solo la rellena, en la última declaración del año, quien no presenta el resumen anual (modelo 390). Dónde va cada cifra en tu caso, confírmalo con tu asesor.</p></div>
+          </details>
+        </div>
+
+        <h2 id="tienda">¿Vendes por internet?</h2>
+        <p>La <a href="../calculadora/">calculadora</a> hace este cálculo con todas las ventas del trimestre a partir de un archivo de tu tienda o de piezas apuntadas a mano, y te descarga el libro registro. Si tu tienda es de PrestaShop, la <a href="../#guia">guía paso a paso</a> explica cómo dejarla configurada para el REBU.</p>
+        <p class="muted">Fuentes: Ley 37/1992 del IVA, artículos 135 a 139; instrucciones del modelo 303 (Agencia Tributaria, 2025); Agencia Tributaria, «Funcionamiento del REBU». Comprobado el 3 de octubre de 2026.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="modulo" aria-labelledby="modulo-t" hidden>
+    <div class="wrap">
+      <div class="waitlist">
+        <div>
+          <h2 id="modulo-t">¿Te ahorraría trabajo que tu tienda lo hiciera sola?</h2>
+          <p>Estamos midiendo si interesa una herramienta para tu tienda online que calcule el margen de cada venta, haga las facturas REBU y lleve el libro registro sin apaños. Dinos con qué vendes y la haremos para la plataforma que más se pida.</p>
+          <a class="btn" id="waitlist-link" href="#" rel="noopener">Avísame si sale <svg class="i" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
+          <small>Solo es obligatorio el correo y con qué vendes: los usamos para avisarte una vez y los borramos si la herramienta no sale. Responsable: Rubén Blánquez. Para borrarlos antes, vuelve al formulario y elige «Borrar mis datos». El formulario es de Google Forms.</small>
+        </div>
+        <ul>
+          <li><svg class="i" aria-hidden="true"><use href="../assets/icons.svg#check"/></svg>El margen de cada venta con su propio precio de compra.</li>
+          <li><svg class="i" aria-hidden="true"><use href="../assets/icons.svg#check"/></svg>Facturas REBU correctas, sin desglose ni columnas de «0&nbsp;%».</li>
+          <li><svg class="i" aria-hidden="true"><use href="../assets/icons.svg#check"/></svg>El libro registro y el informe del trimestre, sin exportar nada.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p class="disclaimer">Herramienta de cálculo y documentación. No es asesoramiento fiscal: aplicar el régimen y revisar las cifras corresponde al comerciante y a su asesor.</p>
+      <p>Sin cookies ni analítica. Hecho por lanabes. Última revisión: 3 de octubre de 2026.</p>
+    </div>
+    <nav aria-label="Pie">
+      <a href="../factura-rebu/">Factura REBU</a>
+      <a href="./">Cálculo con ejemplos</a>
+      <a href="../libro-registro-rebu/">Libro registro</a>
+      <a href="../#guia">Guía PrestaShop</a>
+      <a href="../calculadora/">Calculadora</a>
+      <a href="../fr/calcul-tva-sur-marge/" hreflang="fr" lang="fr">Version française</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../assets/config.js"></script>
+<script type="module" src="../assets/paso.js"></script>
+<script type="module" src="../assets/waitlist.js"></script>
+</body>
+</html>
