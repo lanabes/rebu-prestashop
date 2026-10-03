@@ -7,7 +7,7 @@
 // - Solo valen enlaces que empiecen por https://
 window.REBU_CONFIG = {
   waitlistUrl: {
-    es: '',
-    fr: '',
+    es: 'https://docs.google.com/forms/d/e/1FAIpQLSdbLLjKOhY_TP5YccBAUuVKGT6umtUwacN-IR0goIL2ftUAYQ/viewform',
+    fr: 'https://docs.google.com/forms/d/e/1FAIpQLSfF6aX1J9u-flQ4HsLnMnNoxzOi6b1QkcZaFJ7-4gtdFEcx8g/viewform',
   },
 };
