@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calculadora del IVA del REBU por trimestre: base, cuota y libro registro</title>
+<meta name="description" content="Calcula gratis el IVA del REBU de tus ventas de segunda mano: base imponible y cuota por trimestre y tipo, y el libro registro listo para tu asesor. Sube un CSV o apunta las piezas a mano. Tus datos no salen de tu ordenador.">
+<link rel="canonical" href="https://lanabes.github.io/rebu-prestashop/calculadora/">
+<link rel="alternate" hreflang="es" href="https://lanabes.github.io/rebu-prestashop/calculadora/">
+<link rel="alternate" hreflang="fr" href="https://lanabes.github.io/rebu-prestashop/fr/calculatrice/">
+<meta name="theme-color" content="#F5F0E6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1512" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="REBU · IVA sobre el margen">
+<meta property="og:title" content="Calculadora del IVA del REBU por trimestre">
+<meta property="og:description" content="Base imponible, cuota y libro registro de tus ventas de segunda mano. Gratis, y tus datos no salen de tu ordenador.">
+<meta property="og:url" content="https://lanabes.github.io/rebu-prestashop/calculadora/">
+<meta property="og:image" content="https://lanabes.github.io/rebu-prestashop/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculadora del IVA del REBU",
+      "url": "https://lanabes.github.io/rebu-prestashop/calculadora/",
+      "inLanguage": "es",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Cualquiera con navegador",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+      "description": "Calcula la base imponible y la cuota del régimen especial de bienes usados por trimestre y tipo de IVA, a partir de un CSV o de piezas apuntadas a mano, y descarga el libro registro. Funciona en el navegador, sin enviar datos."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "¿Cómo se calcula el IVA del REBU?", "acceptedAnswer": { "@type": "Answer", "text": "Primero el margen: precio de venta menos precio de compra, los dos con el IVA que lleven dentro. Después la base imponible: margen × 100 / (100 + tipo). La cuota es la base por el tipo. Una pieza comprada por 300 € y vendida por 450 € al 21 % deja un margen de 150 €, una base de 123,97 € y una cuota de 26,03 €." } },
+        { "@type": "Question", "name": "¿El IVA del REBU es deducible?", "acceptedAnswer": { "@type": "Answer", "text": "No. El comprador no puede deducir el IVA de una compra en REBU (artículo 138 de la Ley del IVA), y el revendedor tampoco deduce el IVA que pagó al comprar los bienes que revende en este régimen (artículo 139)." } },
+        { "@type": "Question", "name": "¿Qué pasa si vendo una pieza por menos de lo que me costó?", "acceptedAnswer": { "@type": "Answer", "text": "En el método de operación a operación, el margen negativo da una base de 0 y no se resta de otras ventas. La calculadora lo aplica así y lo señala." } },
+        { "@type": "Question", "name": "¿Qué es el libro registro del REBU?", "acceptedAnswer": { "@type": "Answer", "text": "El Reglamento del IVA (artículo 51) pide anotar cada pieza vendida en REBU con su descripción, el número de factura o documento de compra, el precio de compra, el número de factura de venta, el precio de venta y el IVA de la venta. La descarga de la calculadora sigue ese orden." } },
+        { "@type": "Question", "name": "¿Se envían mis ventas a algún sitio?", "acceptedAnswer": { "@type": "Answer", "text": "No. La calculadora lee el archivo y hace las cuentas en tu navegador. No se envía ni se guarda nada en ningún servidor." } }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="REBU, IVA sobre el margen: inicio">
+      <svg viewBox="0 0 1000 1000" aria-hidden="true"><rect width="1000" height="1000" rx="220" fill="#1F4436"/><path d="M439 175h122q14 0 22 11.5l155.5 222.1Q750 425 750 445v335q0 45-45 45H295q-45 0-45-45V445q0-20 11.5-36.4L417 186.5q8-11.5 22-11.5Z" fill="#F2EBDC"/><circle cx="500" cy="237.5" r="37.5" fill="#1F4436"/><rect x="350" y="500" width="300" height="75" rx="37.5" fill="#1F4436"/><rect x="350" y="650" width="175" height="75" rx="37.5" fill="#1F4436"/></svg>
+      REBU <span>IVA sobre el margen</span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="../factura-rebu/">Factura</a>
+      <a href="../#guia" class="hide-sm">PrestaShop</a>
+      <a href="./" aria-current="page">Calculadora</a>
+      <a href="../fr/calculatrice/" class="lang" hreflang="fr" lang="fr" aria-label="Version française">FR</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+  <section class="calc-head">
+    <div class="wrap">
+      <h1>Calculadora del IVA del REBU</h1>
+      <p class="lead">Calcula la base imponible y la cuota de tus ventas de segunda mano por trimestre y tipo de IVA, y descarga el libro registro para tu asesor. Sube un archivo de ventas o apunta las piezas a mano.</p>
+      <p class="assure"><svg class="i" aria-hidden="true"><use href="../assets/icons.svg#lock"/></svg> Todo se calcula en este navegador. No se envía ni se guarda nada en ningún sitio.</p>
+    </div>
+  </section>
+
+  <section class="wrap" id="app" aria-live="polite" data-icons="../assets/icons.svg" data-sample="../assets/ejemplo-pedidos.csv" data-template="../assets/plantilla-rebu.csv" data-guide="../#paso-5">
+    <noscript><div class="panel state"><h2>La calculadora necesita JavaScript</h2><p>Actívalo en tu navegador para usarla. Las cuentas se hacen en tu ordenador.</p></div></noscript>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="prose">
+        <h2>Cómo calcula</h2>
+        <ul>
+          <li><strong>Margen</strong> = precio de venta − precio de compra, los dos con el IVA que lleven dentro. <strong>Base imponible</strong> = margen × 100 / (100 + tipo). <strong>Cuota</strong> = base × tipo, sobre el total de cada tipo.</li>
+          <li><strong>Margen negativo:</strong> base 0, sin compensar con otras ventas (método de operación a operación, el habitual).</li>
+          <li><strong>Trimestre:</strong> por la fecha de la factura. Las líneas sin fecha no entran en ninguno.</li>
+          <li><strong>Tipo:</strong> el de la columna «tipo_iva» de tu archivo o el que elijas al apuntar la pieza. Si no hay, el 21 %.</li>
+        </ul>
+
+        <h2>Qué archivo vale</h2>
+        <p>Cualquier CSV con una fila por pieza vendida y, al menos, la fecha de la factura y el precio de venta. Para que el cálculo sirva, también el precio de compra. La <a href="../assets/plantilla-rebu.csv" download>plantilla</a> lleva estas columnas, y la puedes rellenar en Excel y guardarla como CSV:</p>
+        <dl class="fields">
+          <dt>fecha</dt><dd>Fecha de la factura de venta</dd>
+          <dt>producto</dt><dd>Descripción del bien</dd>
+          <dt>venta</dt><dd>Precio de venta, IVA incluido</dd>
+          <dt>coste</dt><dd>Precio de compra de esa pieza</dd>
+          <dt>tipo_iva</dt><dd>21, 10 o 4</dd>
+          <dt>factura</dt><dd>Nº de factura de venta (opcional)</dd>
+          <dt>documento_compra</dt><dd>Nº del documento de compra (opcional)</dd>
+        </dl>
+        <p class="muted">Si los nombres de tus columnas son otros, la calculadora te pedirá que le digas cuál es cuál. Si vendes con PrestaShop, el <a href="../#paso-5">paso 5 de la guía</a> explica cómo sacar el archivo con la consulta que hemos probado.</p>
+
+        <h2 id="preguntas">Preguntas frecuentes</h2>
+        <div class="faq">
+          <details>
+            <summary>¿Cómo se calcula el IVA del REBU?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>Primero el margen: precio de venta menos precio de compra, los dos con el IVA que lleven dentro. Después la base imponible: margen × 100 / (100 + tipo). La cuota es la base por el tipo. Una pieza comprada por 300 € y vendida por 450 € al 21 % deja un margen de 150 €, una base de 123,97 € y una cuota de 26,03 €.</p></div>
+          </details>
+          <details>
+            <summary>¿El IVA del REBU es deducible?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>No. El comprador no puede deducir el IVA de una compra en REBU (artículo 138 de la Ley del IVA), y el revendedor tampoco deduce el IVA que pagó al comprar los bienes que revende en este régimen (artículo 139).</p></div>
+          </details>
+          <details>
+            <summary>¿Qué pasa si vendo una pieza por menos de lo que me costó?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>En el método de operación a operación, el margen negativo da una base de 0 y no se resta de otras ventas. La calculadora lo aplica así y lo señala.</p></div>
+          </details>
+          <details>
+            <summary>¿Qué es el libro registro del REBU?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>El Reglamento del IVA (artículo 51) pide anotar cada pieza vendida en REBU con su descripción, el número de factura o documento de compra, el precio de compra, el número de factura de venta, el precio de venta y el IVA de la venta. La descarga de la calculadora sigue ese orden y añade la fecha, el margen y la base.</p></div>
+          </details>
+          <details>
+            <summary>¿Se envían mis ventas a algún sitio?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>No. La calculadora lee el archivo y hace las cuentas en tu navegador. No se envía ni se guarda nada en ningún servidor. Esta web tampoco usa cookies ni herramientas de analítica.</p></div>
+          </details>
+        </div>
+        <p class="muted">¿Necesitas también la factura? Mira <a href="../factura-rebu/">qué tiene que llevar una factura REBU</a>, con un modelo para rellenar e imprimir.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="modulo" aria-labelledby="modulo-t" hidden>
+    <div class="wrap">
+      <div class="waitlist">
+        <div>
+          <h2 id="modulo-t">¿Te ahorraría trabajo que tu tienda lo hiciera sola?</h2>
+          <p>Estamos midiendo si interesa una herramienta para tu tienda online que aplique el REBU sin apaños. Dinos con qué vendes y la haremos para la plataforma que más se pida.</p>
+          <a class="btn" id="waitlist-link" href="#" rel="noopener">Avísame si sale <svg class="i" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
+          <small>Solo es obligatorio el correo y con qué vendes: los usamos para avisarte una vez y los borramos si la herramienta no sale. El formulario es de Google Forms.</small>
+        </div>
+        <ul>
+          <li><svg class="i" aria-hidden="true"><use href="../assets/icons.svg#check"/></svg>Facturas REBU correctas, sin desglose ni columnas de «0 %».</li>
+          <li><svg class="i" aria-hidden="true"><use href="../assets/icons.svg#check"/></svg>La mención solo en las facturas que la necesitan.</li>
+          <li><svg class="i" aria-hidden="true"><use href="../assets/icons.svg#check"/></svg>El precio de compra de cada pieza, aunque tengas varias iguales.</li>
+          <li><svg class="i" aria-hidden="true"><use href="../assets/icons.svg#check"/></svg>El libro registro y el informe del trimestre, sin exportar nada.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p class="disclaimer">Herramienta de cálculo y documentación. No es asesoramiento fiscal: aplicar el régimen y revisar las cifras corresponde al comerciante y a su asesor.</p>
+      <p>Sin cookies ni analítica. Hecho por lanabes. Última revisión: 3 de octubre de 2026.</p>
+    </div>
+    <nav aria-label="Pie">
+      <a href="../factura-rebu/">Factura REBU</a>
+      <a href="../#guia">Guía PrestaShop</a>
+      <a href="./">Calculadora</a>
+      <a href="../fr/calculatrice/" hreflang="fr" lang="fr">Version française</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" id="toast"></div>
+<script src="../assets/config.js"></script>
+<script type="module" src="../assets/calculadora.js"></script>
+<script type="module" src="../assets/waitlist.js"></script>
+</body>
+</html>

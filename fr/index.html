@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TVA sur marge sur PrestaShop : la configurer pas à pas, biens d’occasion</title>
+<meta name="description" content="Guide gratuit, testé sur PrestaShop 9.2, pour appliquer le régime de la marge des biens d’occasion : taxe à 0 %, mention sur la facture, prix d’achat de chaque vente et calculatrice de la base imposable.">
+<link rel="canonical" href="https://lanabes.github.io/rebu-prestashop/fr/">
+<link rel="alternate" hreflang="es" href="https://lanabes.github.io/rebu-prestashop/">
+<link rel="alternate" hreflang="fr" href="https://lanabes.github.io/rebu-prestashop/fr/">
+<link rel="alternate" hreflang="x-default" href="https://lanabes.github.io/rebu-prestashop/">
+<meta name="theme-color" content="#F5F0E6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1512" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="TVA sur marge pour PrestaShop">
+<meta property="og:title" content="TVA sur marge sur PrestaShop : la TVA, seulement sur la marge">
+<meta property="og:description" content="Guide pas à pas et calculatrice gratuite pour les boutiques d’occasion sous PrestaShop.">
+<meta property="og:url" content="https://lanabes.github.io/rebu-prestashop/fr/">
+<meta property="og:image" content="https://lanabes.github.io/rebu-prestashop/img/og-fr.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "headline": "TVA sur marge sur PrestaShop : la configurer pas à pas",
+      "inLanguage": "fr",
+      "url": "https://lanabes.github.io/rebu-prestashop/fr/",
+      "datePublished": "2026-10-02",
+      "dateModified": "2026-10-02",
+      "author": { "@type": "Organization", "name": "lanabes" },
+      "about": ["Régime de la marge", "Biens d’occasion", "PrestaShop", "TVA"],
+      "proficiencyLevel": "Beginner"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "PrestaShop gère-t-il la TVA sur marge en standard ?", "acceptedAnswer": { "@type": "Answer", "text": "Non. PrestaShop calcule la TVA sur le prix uniquement. La demande, l’issue 24231 de son dépôt, est ouverte depuis 2021. Ce guide contourne le problème avec des fonctions que PrestaShop propose déjà." } },
+        { "@type": "Question", "name": "Pourquoi le groupe s’appelle « TVA sur marge 20 % » si la taxe est à 0 % ?", "acceptedAnswer": { "@type": "Answer", "text": "Le 0 % est ce que PrestaShop ajoute au prix : rien, car la TVA sur la marge est déjà incluse. Le 20 % est le taux que vous appliquerez à la marge dans votre déclaration. La calculatrice lit ce nombre dans le nom du groupe." } },
+        { "@type": "Question", "name": "Que se passe-t-il si je vends une pièce moins cher que son prix d’achat ?", "acceptedAnswer": { "@type": "Answer", "text": "Avec la méthode opération par opération, la marge négative donne une base nulle et ne s’impute pas sur les autres ventes. La calculatrice l’applique ainsi et vous le signale." } },
+        { "@type": "Question", "name": "Mes commandes sont-elles envoyées quelque part ?", "acceptedAnswer": { "@type": "Answer", "text": "Non. La calculatrice lit le fichier dans votre navigateur et fait les calculs sur place. Rien n’est envoyé ni enregistré sur un serveur." } }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="TVA sur marge, biens d’occasion : accueil">
+      <svg viewBox="0 0 1000 1000" aria-hidden="true"><rect width="1000" height="1000" rx="220" fill="#1F4436"/><path d="M439 175h122q14 0 22 11.5l155.5 222.1Q750 425 750 445v335q0 45-45 45H295q-45 0-45-45V445q0-20 11.5-36.4L417 186.5q8-11.5 22-11.5Z" fill="#F2EBDC"/><circle cx="500" cy="237.5" r="37.5" fill="#1F4436"/><rect x="350" y="500" width="300" height="75" rx="37.5" fill="#1F4436"/><rect x="350" y="650" width="175" height="75" rx="37.5" fill="#1F4436"/></svg>
+      TVA sur marge <span>biens d’occasion</span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="./facture-tva-sur-marge/">Facture</a>
+      <a href="#guide" class="hide-sm" aria-current="page">PrestaShop</a>
+      <a href="./calculatrice/">Calculatrice</a>
+      <a href="../" class="lang" hreflang="es" lang="es" aria-label="Versión en español">ES</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>La TVA, seulement sur la marge.</h1>
+      <p class="lead">Guide gratuit et calculatrice pour appliquer le régime de la marge des biens d’occasion dans une boutique PrestaShop. Testé pas à pas sur PrestaShop 8.2 et 9.2.</p>
+      <div class="ctas">
+        <a class="btn" href="calculatrice/">Calculer mon trimestre <svg class="i" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
+        <a class="btn btn-ghost" href="#guide">Lire le guide</a>
+      </div>
+      <p class="assure"><svg class="i" aria-hidden="true"><use href="../assets/icons.svg#lock"/></svg> Sans inscription. Vos commandes ne quittent pas votre ordinateur.</p>
+    </div>
+
+    <div class="stage">
+      <svg class="string" viewBox="0 0 160 124" fill="none" aria-hidden="true"><path class="twine-shadow" d="M123 1C117 35 75 53 81 83" stroke-width="2" stroke-linecap="round"/><path class="twine" d="M122 0C116 34 74 52 80 82" stroke-width="2" stroke-linecap="round"/></svg>
+      <div class="tag" id="tag">
+        <svg class="tag-cap" viewBox="0 0 340 74" preserveAspectRatio="none" aria-hidden="true"><path d="M0 74V66q0-8 6-14L96 6q8-6 18-6h112q10 0 18 6l90 46q6 6 6 14v8Z"/><circle class="hole" cx="170" cy="34" r="9"/></svg>
+        <div class="tag-body">
+          <h2 class="sr-only">Essayez le calcul avec une pièce</h2>
+          <div class="tag-row"><label for="t-buy">Achetée</label><span class="tag-input"><input id="t-buy" inputmode="decimal" autocomplete="off" value="300" aria-describedby="t-note"><span aria-hidden="true">€</span></span></div>
+          <div class="tag-row"><label for="t-sell">Revendue</label><span class="tag-input"><input id="t-sell" inputmode="decimal" autocomplete="off" value="450" aria-describedby="t-note"><span aria-hidden="true">€</span></span></div>
+          <div class="tag-perf" aria-hidden="true"></div>
+          <div class="tag-row"><span class="k">Marge</span><span class="v" id="t-margin">150,00 €</span></div>
+          <div class="tag-row tag-total" aria-live="polite"><span class="k">TVA à déclarer</span><span class="v" id="t-quota">25,00 €</span></div>
+          <div class="tag-rates" role="group" aria-label="Taux de TVA de l’article">
+            <button type="button" data-rate="20" aria-pressed="true">20 %</button>
+            <button type="button" data-rate="10" aria-pressed="false">10 %</button>
+            <button type="button" data-rate="5.5" aria-pressed="false">5,5 %</button>
+          </div>
+          <p class="tag-note" id="t-note">Avec la TVA sur le prix total, ce serait <strong id="t-full">75,00 €</strong>.</p>
+        </div>
+      </div>
+      <p class="stage-caption">Modifiez les montants de l’étiquette. C’est le même calcul que fait la calculatrice pour chaque vente.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section band" id="principe" aria-labelledby="principe-t">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="principe-t">La TVA sur marge, en deux phrases</h2>
+      <p>Si vous revendez des biens d’occasion achetés à des particuliers, vous ne payez la TVA que sur ce que vous gagnez sur chaque pièce, pas sur le prix total. C’est le régime de la marge (article 297 A du CGI), et PrestaShop ne le gère pas en standard.</p>
+    </div>
+    <dl class="example" aria-label="Exemple avec une pièce à 20 %">
+      <div><dt>Achetée</dt><dd>300,00 €</dd></div>
+      <div><dt>Revendue</dt><dd>450,00 €</dd></div>
+      <div><dt>Marge TTC</dt><dd>150,00 €<span class="op">450 − 300</span></dd></div>
+      <div><dt>Base HT</dt><dd>125,00 €<span class="op">150 / 1,20</span></dd></div>
+      <div class="hl"><dt>TVA à déclarer</dt><dd>25,00 €<span class="op">125 × 20 %</span></dd></div>
+    </dl>
+    <p class="section-link"><a href="facture-tva-sur-marge/">À quoi ressemble une facture TVA sur marge, avec un modèle à remplir <svg class="i i-sm" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a></p>
+  </div>
+</section>
+
+<section class="section" id="guide" aria-label="Guide">
+  <div class="wrap guide">
+    <nav class="toc" aria-label="Dans ce guide">
+      <p>Dans ce guide</p>
+      <ol>
+        <li><a href="#avant">Avant de commencer</a></li>
+        <li><a href="#etapes">La configuration en cinq étapes</a></li>
+        <li><a href="#calculer">Calculer chaque trimestre</a></li>
+        <li><a href="#limites">Ce que ça couvre, et pas</a></li>
+        <li><a href="#questions">Questions fréquentes</a></li>
+      </ol>
+    </nav>
+
+    <article class="prose">
+      <h2 id="avant">Avant de commencer</h2>
+      <p>Le régime de la marge s’applique aux biens d’occasion que vous avez achetés à quelqu’un qui ne vous a pas facturé de TVA : le cas typique est l’achat à un particulier. <strong>C’est donc vous qui indiquez quels articles en relèvent</strong> ; aucun outil ne peut le deviner.</p>
+      <p>La configuration n’utilise que des fonctions déjà présentes dans PrestaShop. Les articles d’occasion sont vendus sans TVA ajoutée, car la TVA sur la marge est comprise dans le prix. La facture porte la mention obligatoire. Chaque vente garde le prix d’achat de la pièce. Et chaque trimestre, vous exportez un fichier de vos ventes pour calculer la base imposable.</p>
+      <div class="note warn" role="note">
+        <svg class="i" aria-hidden="true"><use href="../assets/icons.svg#alert"/></svg>
+        <div><p><strong>Ce guide aide à calculer et à documenter ; ce n’est pas un conseil fiscal.</strong> Décider si vous appliquez le régime, à quels articles et comment vous le déclarez relève de vous et de votre expert-comptable. Montrez-lui cette configuration avant de l’utiliser.</p></div>
+      </div>
+      <div class="note" role="note">
+        <svg class="i" aria-hidden="true"><use href="../assets/icons.svg#info"/></svg>
+        <div><p><strong>Les références changent le 1<sup>er</sup> janvier 2027.</strong> L’ordonnance n° 2025-1247 transfère la TVA du CGI vers le code des impositions sur les biens et services, avec une nouvelle numérotation. Les articles cités ici sont ceux en vigueur aujourd’hui ; nous mettrons ce guide à jour.</p></div>
+      </div>
+
+      <h2 id="etapes">La configuration en cinq étapes</h2>
+      <p class="muted">Vérifié sur des boutiques de test PrestaShop 9.2.0 (2 octobre 2026, administration en français) et 8.2.8 (3 octobre, administration en espagnol). Les menus sont les mêmes dans les deux versions.</p>
+
+      <ol class="steps">
+        <li class="step" id="etape-1">
+          <h3>Créez une taxe « TVA sur marge » à 0 %</h3>
+          <p>Allez dans <span class="path">International<span class="sep">›</span>Taxes</span> et cliquez sur <strong>Ajouter une taxe</strong>.</p>
+          <dl class="fields">
+            <dt>Nom</dt><dd>TVA sur marge</dd>
+            <dt>Taux</dt><dd>0</dd>
+            <dt>Activer</dt><dd>Oui</dd>
+          </dl>
+          <p class="muted">C’est indispensable, même si cela paraît étrange : sur la fiche produit, PrestaShop ne propose que les groupes de taxes qui contiennent au moins une taxe active. Un groupe vide n’apparaît pas dans la liste.</p>
+        </li>
+
+        <li class="step" id="etape-2">
+          <h3>Créez le groupe « TVA sur marge 20 % »</h3>
+          <p>Dans la même rubrique, ouvrez l’onglet <strong>Règles de taxes</strong> et cliquez sur <strong>Ajouter un groupe de règles de taxes</strong>. Nommez-le <strong>TVA sur marge 20 %</strong>, activez-le et cliquez sur <strong>Enregistrer et rester</strong>.</p>
+          <p>Le bouton <strong>Add a tax rule</strong> apparaît en dessous (il reste en anglais en 9.2). Remplissez la fenêtre ainsi, puis enregistrez :</p>
+          <figure>
+            <div class="shot"><img src="../img/ps-fr-regle.png" width="2304" height="920" alt="Fenêtre « Ajouter une nouvelle règle de taxe » de PrestaShop : Pays, Tous les pays ; Comportement, Cette taxe uniquement ; Taxes, TVA sur marge (0.000%)." loading="lazy" decoding="async"></div>
+            <figcaption>Pays : Tous les pays. Comportement : Cette taxe uniquement. Taxes : TVA sur marge (0.000%). PrestaShop crée une règle par pays, toutes à 0 %.</figcaption>
+          </figure>
+          <p class="muted">Sous PrestaShop 8, pas de fenêtre : la règle s’ajoute dans le formulaire affiché sous le groupe, avec les mêmes valeurs (tous les pays), puis on enregistre.</p>
+          <p>Si certains de vos articles d’occasion relèvent d’un taux réduit, créez aussi <strong>TVA sur marge 5,5 %</strong> ou <strong>TVA sur marge 10 %</strong> de la même façon. Le nombre dans le nom est le taux que la calculatrice appliquera à la marge.</p>
+        </li>
+
+        <li class="step" id="etape-3">
+          <h3>Attribuez le groupe et le prix d’achat à chaque article d’occasion</h3>
+          <p>Dans <span class="path">Catalogue<span class="sep">›</span>Produits</span>, ouvrez l’article et allez dans l’onglet <strong>Prix</strong>.</p>
+          <ul>
+            <li><strong>Règle de taxe :</strong> TVA sur marge 20 % (ou celle qui convient).</li>
+            <li><strong>Prix de vente :</strong> le prix final. Comme la taxe est à 0 %, le prix HT et le prix TTC sont identiques ; la TVA sur la marge est déjà incluse.</li>
+            <li><strong>Prix d’achat :</strong> ce que vous avez payé pour cette pièce. PrestaShop l’enregistre dans chaque commande tel qu’il était au moment de la vente.</li>
+          </ul>
+          <figure>
+            <div class="shot"><img src="../img/ps-fr-produit-prix.png" width="1520" height="576" alt="Onglet Prix d’un produit dans PrestaShop 9.2 : prix de vente 450, règle de taxe TVA sur marge 20 % à 0 %, et prix d’achat 300." loading="lazy" decoding="async"></div>
+            <figcaption>Un article de test : vendu 450 €, acheté 300 €, sans TVA ajoutée.</figcaption>
+          </figure>
+          <div class="note" role="note">
+            <svg class="i" aria-hidden="true"><use href="../assets/icons.svg#info"/></svg>
+            <div><p><strong>Le prix d’achat est unique par produit.</strong> Si vous avez plusieurs pièces identiques achetées à des prix différents, mettez à jour le prix d’achat avant chaque vente, ou corrigez-le ensuite ligne par ligne dans la calculatrice.</p></div>
+          </div>
+        </li>
+
+        <li class="step" id="etape-4">
+          <h3>Ajoutez la mention sur la facture</h3>
+          <p>Dans <span class="path">Commandes<span class="sep">›</span>Factures</span>, descendez jusqu’à <strong>Options des factures</strong> et saisissez dans <strong>Texte libre</strong> :</p>
+          <figure>
+            <div class="shot"><img src="../img/ps-fr-texte-legal.png" width="1622" height="238" alt="Champ « Texte libre » de PrestaShop, langue FR, avec le texte « Régime particulier-Biens d’occasion »." loading="lazy" decoding="async"></div>
+            <figcaption>La mention exigée par l’article 242 nonies A, I-16° de l’annexe II au CGI. Elle s’imprime sur la facture sous le récapitulatif des moyens de paiement.</figcaption>
+          </figure>
+          <p><strong>Le champ existe pour chaque langue</strong> (sélecteur à droite) : remplissez-le dans chacune, car la facture sort dans la langue de la commande. Quand on installe une langue, PrestaShop recopie le texte existant ; vérifiez-le.</p>
+          <p>Ainsi, la facture ne fait pas apparaître de TVA sur ces articles, comme l’exige l’article 297 E du CGI. Voyez dans <a href="#limites">ce que ça couvre</a> à quoi ressemble exactement la facture.</p>
+        </li>
+
+        <li class="step" id="etape-5">
+          <h3>Exportez chaque trimestre le fichier des ventes avec le prix d’achat</h3>
+          <p>L’export standard des commandes ne contient pas le prix d’achat. Pour l’obtenir, allez dans <span class="path">Paramètres avancés<span class="sep">›</span>Base de données</span>, onglet <strong>Gestionnaire SQL</strong>, et cliquez sur <strong>Ajouter une requête SQL</strong>. Donnez-lui un nom, par exemple « Commandes pour la calculatrice TVA sur marge », collez cette requête et enregistrez :</p>
+          <div class="code">
+            <div class="code-head"><span>Requête pour le Gestionnaire SQL</span><button type="button" class="copy" data-copy="sql" aria-label="Copier la requête"><svg class="i idle" aria-hidden="true"><use href="../assets/icons.svg#copy"/></svg><svg class="i ok" aria-hidden="true"><use href="../assets/icons.svg#check"/></svg><span class="lbl">Copier</span></button></div>
+<pre id="sql"><code><span class="kw">SELECT</span>
+  o.id_order <span class="kw">AS</span> commande,
+  o.reference <span class="kw">AS</span> reference,
+  o.invoice_number <span class="kw">AS</span> facture,
+  o.invoice_date <span class="kw">AS</span> date_facture,
+  od.product_name <span class="kw">AS</span> produit,
+  od.product_quantity <span class="kw">AS</span> quantite,
+  od.product_quantity_refunded <span class="kw">AS</span> quantite_remboursee,
+  od.total_price_tax_incl <span class="kw">AS</span> vente_ttc,
+  od.original_wholesale_price <span class="kw">AS</span> prix_achat,
+  trg.name <span class="kw">AS</span> groupe_taxes,
+  od.tax_rate <span class="kw">AS</span> tva_boutique
+<span class="kw">FROM</span> ps_order_detail od
+<span class="kw">INNER JOIN</span> ps_orders o <span class="kw">ON</span> o.id_order = od.id_order
+<span class="kw">LEFT JOIN</span> ps_tax_rules_group trg
+  <span class="kw">ON</span> trg.id_tax_rules_group = od.id_tax_rules_group
+<span class="kw">WHERE</span> o.valid = 1 <span class="kw">AND</span> o.invoice_number &gt; 0
+<span class="kw">ORDER BY</span> o.invoice_date, o.id_order</code></pre>
+          </div>
+          <p>Dans la liste des requêtes, le bouton <strong>Exporter</strong> (le nuage) la télécharge. PrestaShop enregistre un fichier nommé <code>request_sql_1.csv</code> (le numéro varie) avec toutes les lignes des commandes valides qui ont une facture.</p>
+          <p class="muted">Si, dans la « Listes des tables MySQL » de ce même écran, vos tables ne commencent pas par <code>ps_</code>, remplacez <code>ps_</code> par votre préfixe dans les trois tables de la requête.</p>
+        </li>
+      </ol>
+
+      <h2 id="calculer">Calculer la base de chaque trimestre</h2>
+      <p>Importez le fichier dans la <a href="calculatrice/">calculatrice</a>. Elle répartit vos ventes par trimestre (selon la date de facture) et par taux, et donne la base hors taxe et la TVA. Elle reconnaît d’elle-même les lignes des groupes « TVA sur marge » et laisse de côté les produits neufs.</p>
+      <ul>
+        <li><strong>Marge TTC</strong> = prix de vente − prix d’achat.</li>
+        <li><strong>Base HT</strong> = marge × 100 / (100 + taux), soit la marge divisée par 1,20 au taux normal. Le BOFiP utilise le coefficient arrondi 0,833 : l’écart est de quelques centimes au plus.</li>
+        <li><strong>Marge négative :</strong> base nulle, sans imputation sur les autres ventes. C’est la règle de la méthode opération par opération, celle qu’utilise la calculatrice.</li>
+      </ul>
+      <p>Vous pouvez corriger le prix d’achat ou de vente de n’importe quelle ligne, décocher celles qui ne relèvent pas du régime et télécharger le détail pour votre expert-comptable. Le fichier est lu dans votre navigateur et ne quitte pas votre ordinateur.</p>
+      <p class="ctas-inline"><a class="btn" href="calculatrice/">Ouvrir la calculatrice <svg class="i" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a> <a class="btn btn-ghost" href="calculatrice/#exemple">Voir un exemple</a></p>
+
+      <h2 id="limites">Ce que cette configuration couvre, et ce qu’elle ne couvre pas</h2>
+      <p>Nous l’avons testée avec une vraie commande mêlant une pièce d’occasion et un produit neuf, facturée en français. Voici la facture produite par PrestaShop :</p>
+      <figure>
+        <div class="shot"><img src="../img/ps-fr-facture.png" width="1100" height="520" alt="Facture PrestaShop en français : la pièce d’occasion à 450 € avec un taux de taxe de 0 %, le produit neuf avec 21 % ; le détail des taxes ne reprend que le 21 % ; en bas, la mention « Régime particulier-Biens d’occasion »." loading="lazy" decoding="async"></div>
+        <figcaption>La pièce d’occasion n’a pas de TVA apparente et la mention figure en pied de facture. La boutique de test est établie en Espagne : le produit neuf porte donc la TVA espagnole de 21 %.</figcaption>
+      </figure>
+      <div class="scope">
+        <div class="yes">
+          <h3><svg class="i" aria-hidden="true"><use href="../assets/icons.svg#check"/></svg>Ce qui est réglé</h3>
+          <ul>
+            <li>Aucune TVA n’est ajoutée aux articles sous le régime de la marge, ni celle du pays de destination pour une vente dans l’UE.</li>
+            <li>La facture ne fait pas apparaître de TVA sur ces articles et porte la mention obligatoire.</li>
+            <li>Chaque vente garde le prix d’achat de la pièce.</li>
+            <li>La base de la marge par trimestre et par taux, selon la méthode opération par opération.</li>
+          </ul>
+        </div>
+        <div class="no">
+          <h3><svg class="i" aria-hidden="true"><use href="../assets/icons.svg#alert"/></svg>Ce qui ne l’est pas</h3>
+          <ul>
+            <li>La facture affiche « 0 % » dans la colonne de taxe de la pièce d’occasion. Ce n’est pas une TVA, mais parlez-en à votre expert-comptable.</li>
+            <li>La mention apparaît sur toutes les factures, même celles qui ne contiennent que des produits neufs.</li>
+            <li>Les bons de réduction et les frais de port n’entrent pas dans la requête. Si vous en utilisez, ajustez la vente dans la calculatrice.</li>
+            <li>La méthode globale, les avoirs, le registre des achats et la facturation électronique. Voyez avec votre expert-comptable comment vous les gérez.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 id="questions">Questions fréquentes</h2>
+      <div class="faq">
+        <details>
+          <summary>PrestaShop gère-t-il la TVA sur marge en standard ?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="a"><p>Non. PrestaShop calcule la TVA sur le prix uniquement. La demande, l’<a href="https://github.com/PrestaShop/PrestaShop/issues/24231" rel="noopener">issue 24231</a> de son dépôt, est ouverte depuis 2021. Ce guide contourne le problème avec des fonctions que PrestaShop propose déjà.</p></div>
+        </details>
+        <details>
+          <summary>Pourquoi le groupe s’appelle « TVA sur marge 20 % » si la taxe est à 0 % ?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="a"><p>Le 0 % est ce que PrestaShop ajoute au prix : rien, car la TVA sur la marge est déjà incluse. Le 20 % est le taux que vous appliquerez à la marge dans votre déclaration. La calculatrice lit ce nombre dans le nom du groupe.</p></div>
+        </details>
+        <details>
+          <summary>Que se passe-t-il si je vends une pièce moins cher que son prix d’achat ?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="a"><p>Avec la méthode opération par opération, la marge négative donne une base nulle et ne s’impute pas sur les autres ventes. La calculatrice l’applique ainsi et vous le signale.</p></div>
+        </details>
+        <details>
+          <summary>Et si je vends du neuf et de l’occasion dans la même boutique ?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="a"><p>Cela fonctionne : les produits neufs gardent leur groupe de TVA habituel et la calculatrice les écarte. La seule chose que l’on ne peut pas éviter, c’est que la mention apparaisse sur toutes les factures, car le texte libre est le même pour toutes les factures d’une même langue.</p></div>
+        </details>
+        <details>
+          <summary>Est-ce que ça marche sur PrestaShop 8 ?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="a"><p>Oui. Le guide est vérifié sur PrestaShop 8.2.8 et 9.2.0, avec de vraies commandes et factures. Les menus sont les mêmes ; seule différence, en version 8 la règle de taxe s’ajoute dans un formulaire sous le groupe, pas dans une fenêtre.</p></div>
+        </details>
+        <details>
+          <summary>Mes commandes sont-elles envoyées quelque part ?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="a"><p>Non. La calculatrice lit le fichier dans votre navigateur et fait les calculs sur place. Rien n’est envoyé ni enregistré sur un serveur. Ce site n’utilise ni cookies ni outil de mesure d’audience.</p></div>
+        </details>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="modulo" aria-labelledby="modulo-t" hidden>
+  <div class="wrap">
+    <div class="waitlist">
+      <div>
+        <h2 id="modulo-t">Et si votre boutique le faisait toute seule ?</h2>
+        <p>Nous mesurons l’intérêt pour un outil pour votre boutique en ligne, à commencer par PrestaShop, qui règle ce que cette configuration ne peut pas faire. Dites-nous avec quoi vous vendez : nous le ferons pour la plateforme la plus demandée.</p>
+        <a class="btn" id="waitlist-link" href="#" rel="noopener">Prévenez-moi à sa sortie <svg class="i" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg></a>
+        <small>Seuls l’e-mail et votre outil de vente sont obligatoires : ils servent à vous prévenir une fois, et sont supprimés si l’outil ne voit pas le jour. Le formulaire utilise Google Forms.</small>
+      </div>
+      <ul>
+        <li><svg class="i" aria-hidden="true"><use href="../assets/icons.svg#check"/></svg>Des factures sans la colonne « 0 % » pour les pièces d’occasion.</li>
+        <li><svg class="i" aria-hidden="true"><use href="../assets/icons.svg#check"/></svg>La mention uniquement sur les factures qui en ont besoin.</li>
+        <li><svg class="i" aria-hidden="true"><use href="../assets/icons.svg#check"/></svg>Le prix d’achat de chaque pièce, même pour des articles identiques.</li>
+        <li><svg class="i" aria-hidden="true"><use href="../assets/icons.svg#check"/></svg>Le registre et le récapitulatif du trimestre dans la boutique.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p class="disclaimer">Outil de calcul et de documentation. Ce n’est pas un conseil fiscal : l’application du régime et la vérification des montants relèvent du commerçant et de son expert-comptable.</p>
+      <p>Ni cookies ni mesure d’audience. Réalisé par lanabes. Dernière révision : 2 octobre 2026.</p>
+    </div>
+    <nav aria-label="Pied de page">
+      <a href="./facture-tva-sur-marge/">Facture TVA sur marge</a>
+      <a href="#guide">Guide PrestaShop</a>
+      <a href="./calculatrice/">Calculatrice</a>
+      <a href="../" hreflang="es" lang="es">Versión en español</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" id="toast"></div>
+
+<script src="../assets/config.js"></script>
+<script type="module" src="../assets/home.js"></script>
+<script type="module" src="../assets/waitlist.js"></script>
+</body>
+</html>

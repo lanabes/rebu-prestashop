@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://lanabes.github.io/rebu-prestashop/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://lanabes.github.io/rebu-prestashop/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lanabes.github.io/rebu-prestashop/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lanabes.github.io/rebu-prestashop/"/>
+  </url>
+  <url>
+    <loc>https://lanabes.github.io/rebu-prestashop/fr/</loc>
+    <lastmod>2026-10-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://lanabes.github.io/rebu-prestashop/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lanabes.github.io/rebu-prestashop/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lanabes.github.io/rebu-prestashop/"/>
+  </url>
+  <url>
+    <loc>https://lanabes.github.io/rebu-prestashop/calculadora/</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://lanabes.github.io/rebu-prestashop/calculadora/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lanabes.github.io/rebu-prestashop/fr/calculatrice/"/>
+  </url>
+  <url>
+    <loc>https://lanabes.github.io/rebu-prestashop/fr/calculatrice/</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://lanabes.github.io/rebu-prestashop/calculadora/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lanabes.github.io/rebu-prestashop/fr/calculatrice/"/>
+  </url>
+  <url>
+    <loc>https://lanabes.github.io/rebu-prestashop/factura-rebu/</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://lanabes.github.io/rebu-prestashop/factura-rebu/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lanabes.github.io/rebu-prestashop/fr/facture-tva-sur-marge/"/>
+  </url>
+  <url>
+    <loc>https://lanabes.github.io/rebu-prestashop/fr/facture-tva-sur-marge/</loc>
+    <lastmod>2026-10-03</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://lanabes.github.io/rebu-prestashop/factura-rebu/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lanabes.github.io/rebu-prestashop/fr/facture-tva-sur-marge/"/>
+  </url>
+</urlset>

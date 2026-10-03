@@ -1,0 +1,12 @@
+commande;reference;facture;date_facture;produit;quantite;quantite_remboursee;vente_ttc;prix_achat;groupe_taxes;tva_boutique
+2041;EXEMPLE-A;312;"2026-07-03 10:14:22";"[Exemple] Console Super Nintendo PAL en boîte";1;0;189.000000;95.000000;"TVA sur marge 20 %";0.000
+2042;EXEMPLE-B;313;"2026-07-09 18:40:05";"[Exemple] Appareil photo Canon AE-1 avec objectif 50 mm";1;0;245.000000;130.000000;"TVA sur marge 20 %";0.000
+2042;EXEMPLE-B;313;"2026-07-09 18:40:05";"[Exemple] Sangle neuve pour appareil photo";1;0;14.950000;6.200000;"FR Taux standard (20%)";20.000
+2047;EXEMPLE-C;318;"2026-07-21 12:02:51";"[Exemple] iPhone 12 128 Go reconditionné";2;0;598.000000;231.500000;"TVA sur marge 20 %";0.000
+2053;EXEMPLE-D;324;"2026-08-04 09:31:10";"[Exemple] Lot de 12 bandes dessinées anciennes";1;0;36.000000;0.000000;"TVA sur marge 5,5 %";0.000
+2058;EXEMPLE-E;329;"2026-08-18 20:15:44";"[Exemple] Veste en jean vintage taille M";1;0;42.500000;55.000000;"TVA sur marge 20 %";0.000
+2063;EXEMPLE-F;334;"2026-09-02 11:48:37";"[Exemple] Vinyle 33 tours première édition";1;1;64.000000;28.000000;"TVA sur marge 20 %";0.000
+2066;EXEMPLE-G;337;"2026-09-15 17:22:09";"[Exemple] Roman de poche, édition de 1971";1;0;12.900000;3.500000;"TVA sur marge 5,5 %";0.000
+2070;EXEMPLE-H;341;"2026-09-29 13:05:58";"[Exemple] Montre automatique des années 80";1;0;320.000000;210.000000;"";0.000
+2074;EXEMPLE-I;0;"0000-00-00 00:00:00";"[Exemple] Lampe en laiton des années 60";1;0;85.000000;40.000000;"TVA sur marge 20 %";0.000
+2076;EXEMPLE-J;345;"2026-10-01 16:37:12";"[Exemple] Console Game Boy Color";1;0;79.000000;45.000000;"TVA sur marge 20 %";0.000

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calculatrice de TVA sur marge par trimestre : base HT, TVA et registre</title>
+<meta name="description" content="Calculez gratuitement la TVA sur marge de vos ventes d’occasion : base HT et TVA par trimestre et par taux, et le registre prêt pour votre expert-comptable. Importez un CSV ou saisissez les pièces à la main. Vos données ne quittent pas votre ordinateur.">
+<link rel="canonical" href="https://lanabes.github.io/rebu-prestashop/fr/calculatrice/">
+<link rel="alternate" hreflang="es" href="https://lanabes.github.io/rebu-prestashop/calculadora/">
+<link rel="alternate" hreflang="fr" href="https://lanabes.github.io/rebu-prestashop/fr/calculatrice/">
+<meta name="theme-color" content="#F5F0E6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1512" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="TVA sur marge · biens d’occasion">
+<meta property="og:title" content="Calculatrice de TVA sur marge par trimestre">
+<meta property="og:description" content="Base HT, TVA et registre de vos ventes d’occasion. Gratuit, et vos données ne quittent pas votre ordinateur.">
+<meta property="og:url" content="https://lanabes.github.io/rebu-prestashop/fr/calculatrice/">
+<meta property="og:image" content="https://lanabes.github.io/rebu-prestashop/img/og-fr.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Calculatrice de TVA sur marge",
+      "url": "https://lanabes.github.io/rebu-prestashop/fr/calculatrice/",
+      "inLanguage": "fr",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Tout système avec un navigateur",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+      "description": "Calcule la base HT et la TVA du régime de la marge des biens d’occasion par trimestre et par taux, à partir d’un CSV ou de pièces saisies à la main, et télécharge le registre. Fonctionne dans le navigateur, sans envoi de données."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Comment calculer la TVA sur marge ?", "acceptedAnswer": { "@type": "Answer", "text": "La marge est le prix de vente TTC moins le prix d’achat. On la ramène hors taxe en la divisant par 1 + taux (1,20 au taux normal) ; la TVA est la base HT multipliée par le taux. Une pièce achetée 300 € et revendue 450 € donne une marge de 150 €, une base HT de 125 € et une TVA de 25 €." } },
+        { "@type": "Question", "name": "Quelle formule utilise le BOFiP ?", "acceptedAnswer": { "@type": "Answer", "text": "Le BOFiP (BOI-TVA-SECT-90-20, § 290) ramène la marge TTC hors taxe avec un coefficient arrondi, 0,833 au taux de 20 %. La calculatrice divise exactement par 1,20 : l’écart est de quelques centimes au plus." } },
+        { "@type": "Question", "name": "Que se passe-t-il en cas de marge négative ?", "acceptedAnswer": { "@type": "Answer", "text": "Au coup par coup, une vente à perte ne s’impute pas sur les autres ventes (BOFiP, § 250) : sa base est nulle. La calculatrice l’applique ainsi et la signale." } },
+        { "@type": "Question", "name": "Quel taux appliquer à la marge ?", "acceptedAnswer": { "@type": "Answer", "text": "Le taux dont relève le bien vendu (BOFiP, § 410), et non un taux unique. La calculatrice le lit dans votre fichier ou vous le choisissez pour chaque pièce." } },
+        { "@type": "Question", "name": "Mes ventes sont-elles envoyées quelque part ?", "acceptedAnswer": { "@type": "Answer", "text": "Non. La calculatrice lit le fichier et fait les calculs dans votre navigateur. Rien n’est envoyé ni enregistré sur un serveur." } }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../../fr/" aria-label="TVA sur marge, biens d’occasion : accueil">
+      <svg viewBox="0 0 1000 1000" aria-hidden="true"><rect width="1000" height="1000" rx="220" fill="#1F4436"/><path d="M439 175h122q14 0 22 11.5l155.5 222.1Q750 425 750 445v335q0 45-45 45H295q-45 0-45-45V445q0-20 11.5-36.4L417 186.5q8-11.5 22-11.5Z" fill="#F2EBDC"/><circle cx="500" cy="237.5" r="37.5" fill="#1F4436"/><rect x="350" y="500" width="300" height="75" rx="37.5" fill="#1F4436"/><rect x="350" y="650" width="175" height="75" rx="37.5" fill="#1F4436"/></svg>
+      TVA sur marge <span>biens d’occasion</span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="../../fr/facture-tva-sur-marge/">Facture</a>
+      <a href="../../fr/#guide" class="hide-sm">PrestaShop</a>
+      <a href="../../fr/calculatrice/" aria-current="page">Calculatrice</a>
+      <a href="../../calculadora/" class="lang" hreflang="es" lang="es" aria-label="Versión en español">ES</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <section class="calc-head">
+    <div class="wrap">
+      <h1>Calculatrice de TVA sur marge</h1>
+      <p class="lead">Calculez la base HT et la TVA de vos ventes d’occasion par trimestre et par taux, et téléchargez le registre pour votre expert-comptable. Importez un fichier de ventes ou saisissez les pièces à la main.</p>
+      <p class="assure"><svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#lock"/></svg> Tout est calculé dans ce navigateur. Rien n’est envoyé ni enregistré nulle part.</p>
+    </div>
+  </section>
+
+  <section class="wrap" id="app" aria-live="polite" data-icons="../../assets/icons.svg" data-sample="../../assets/exemple-commandes.csv" data-template="../../assets/modele-tva-sur-marge.csv" data-guide="../#etape-5">
+    <noscript><div class="panel state"><h2>La calculatrice a besoin de JavaScript</h2><p>Activez-le dans votre navigateur pour l’utiliser. Les calculs se font sur votre ordinateur.</p></div></noscript>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="prose">
+        <h2>Comment elle calcule</h2>
+        <ul>
+          <li><strong>Marge</strong> = prix de vente TTC − prix d’achat. <strong>Base HT</strong> = marge × 100 / (100 + taux). <strong>TVA</strong> = base × taux, sur le total de chaque taux. Le BOFiP passe de la marge TTC à la base HT avec un coefficient arrondi (0,833 à 20 %) : l’écart est de quelques centimes au plus.</li>
+          <li><strong>Marge négative :</strong> base nulle, sans imputation sur d’autres ventes (méthode au coup par coup).</li>
+          <li><strong>Trimestre :</strong> selon la date de facture. Les lignes sans date n’entrent dans aucun trimestre.</li>
+          <li><strong>Taux :</strong> celui de la colonne « taux_tva » de votre fichier ou celui que vous choisissez en saisissant la pièce. À défaut, 20 %.</li>
+        </ul>
+
+        <h2>Quel fichier utiliser</h2>
+        <p>N’importe quel CSV avec une ligne par pièce vendue et, au minimum, la date de facture et le prix de vente. Pour que le calcul ait un sens, aussi le prix d’achat. Le <a href="../../assets/modele-tva-sur-marge.csv" download>modèle</a> contient ces colonnes ; vous pouvez le remplir dans Excel et l’enregistrer en CSV :</p>
+        <dl class="fields">
+          <dt>date</dt><dd>Date de la facture de vente</dd>
+          <dt>produit</dt><dd>Désignation du bien</dd>
+          <dt>vente_ttc</dt><dd>Prix de vente TTC</dd>
+          <dt>prix_achat</dt><dd>Prix d’achat de cette pièce</dd>
+          <dt>taux_tva</dt><dd>20, 10 ou 5,5</dd>
+          <dt>facture</dt><dd>N° de facture de vente (facultatif)</dd>
+          <dt>document_achat</dt><dd>N° du justificatif d’achat (facultatif)</dd>
+        </dl>
+        <p class="muted">Si vos colonnes portent d’autres noms, la calculatrice vous demandera laquelle est laquelle. Si vous vendez avec PrestaShop, l’<a href="../#etape-5">étape 5 du guide</a> explique comment exporter le fichier avec la requête que nous avons testée.</p>
+
+        <h2 id="questions">Questions fréquentes</h2>
+        <div class="faq">
+          <details>
+            <summary>Comment calculer la TVA sur marge ?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>La marge est le prix de vente TTC moins le prix d’achat. On la ramène hors taxe en la divisant par 1 + taux (1,20 au taux normal) ; la TVA est la base HT multipliée par le taux. Une pièce achetée 300 € et revendue 450 € donne une marge de 150 €, une base HT de 125 € et une TVA de 25 €.</p></div>
+          </details>
+          <details>
+            <summary>Quelle formule utilise le BOFiP ?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>Le BOFiP (BOI-TVA-SECT-90-20, § 290) ramène la marge TTC hors taxe avec un coefficient arrondi, 0,833 au taux de 20 %. La calculatrice divise exactement par 1,20 : l’écart est de quelques centimes au plus.</p></div>
+          </details>
+          <details>
+            <summary>Que se passe-t-il en cas de marge négative ?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>Au coup par coup, une vente à perte ne s’impute pas sur les autres ventes (BOFiP, § 250) : sa base est nulle. La calculatrice l’applique ainsi et la signale.</p></div>
+          </details>
+          <details>
+            <summary>Quel taux appliquer à la marge ?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>Le taux dont relève le bien vendu (BOFiP, § 410), et non un taux unique. La calculatrice le lit dans votre fichier ou vous le choisissez pour chaque pièce.</p></div>
+          </details>
+          <details>
+            <summary>Mes ventes sont-elles envoyées quelque part ?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>Non. La calculatrice lit le fichier et fait les calculs dans votre navigateur. Rien n’est envoyé ni enregistré sur un serveur. Ce site n’utilise ni cookies ni mesure d’audience.</p></div>
+          </details>
+        </div>
+        <p class="muted">Besoin aussi de la facture ? Voyez <a href="../facture-tva-sur-marge/">ce que doit contenir une facture TVA sur marge</a>, avec un modèle à remplir et imprimer.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="modulo" aria-labelledby="modulo-t" hidden>
+    <div class="wrap">
+      <div class="waitlist">
+        <div>
+          <h2 id="modulo-t">Et si votre boutique le faisait toute seule ?</h2>
+          <p>Nous mesurons l’intérêt pour un outil pour votre boutique en ligne qui applique la TVA sur marge sans bricolage. Dites-nous avec quoi vous vendez : nous le ferons pour la plateforme la plus demandée.</p>
+          <a class="btn" id="waitlist-link" href="#" rel="noopener">Prévenez-moi à sa sortie <svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#arrow-right"/></svg></a>
+          <small>Seuls l’e-mail et votre outil de vente sont obligatoires : ils servent à vous prévenir une fois, et sont supprimés si l’outil ne voit pas le jour. Le formulaire utilise Google Forms.</small>
+        </div>
+        <ul>
+          <li><svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#check"/></svg>Des factures sur marge correctes, sans TVA apparente ni colonne « 0 % ».</li>
+          <li><svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#check"/></svg>La mention uniquement sur les factures qui en ont besoin.</li>
+          <li><svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#check"/></svg>Le prix d’achat de chaque pièce, même pour des articles identiques.</li>
+          <li><svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#check"/></svg>Le registre et le récapitulatif du trimestre, sans rien exporter.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p class="disclaimer">Outil de calcul et de documentation. Ce n’est pas un conseil fiscal : l’application du régime et la vérification des montants relèvent du commerçant et de son expert-comptable.</p>
+      <p>Ni cookies ni mesure d’audience. Réalisé par lanabes. Dernière révision : 3 octobre 2026.</p>
+    </div>
+    <nav aria-label="Pied de page">
+      <a href="../../fr/facture-tva-sur-marge/">Facture TVA sur marge</a>
+      <a href="../../fr/#guide">Guide PrestaShop</a>
+      <a href="../../fr/calculatrice/">Calculatrice</a>
+      <a href="../../calculadora/" hreflang="es" lang="es">Versión en español</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" id="toast"></div>
+<script src="../../assets/config.js"></script>
+<script type="module" src="../../assets/calculadora.js"></script>
+<script type="module" src="../../assets/waitlist.js"></script>
+</body>
+</html>

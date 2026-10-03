@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>REBU en PrestaShop: cómo aplicar el IVA sobre el margen, paso a paso</title>
+<meta name="description" content="Guía gratuita, probada en PrestaShop 9.2, para aplicar el régimen especial de bienes usados: impuesto al 0 %, mención en la factura, coste de cada venta y calculadora de la base para el modelo 303.">
+<link rel="canonical" href="https://lanabes.github.io/rebu-prestashop/">
+<link rel="alternate" hreflang="es" href="https://lanabes.github.io/rebu-prestashop/">
+<link rel="alternate" hreflang="fr" href="https://lanabes.github.io/rebu-prestashop/fr/">
+<link rel="alternate" hreflang="x-default" href="https://lanabes.github.io/rebu-prestashop/">
+<meta name="theme-color" content="#F5F0E6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1512" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_ES">
+<meta property="og:site_name" content="REBU para PrestaShop">
+<meta property="og:title" content="REBU en PrestaShop: el IVA, solo sobre el margen">
+<meta property="og:description" content="Guía paso a paso y calculadora gratuita para tiendas de segunda mano con PrestaShop.">
+<meta property="og:url" content="https://lanabes.github.io/rebu-prestashop/">
+<meta property="og:image" content="https://lanabes.github.io/rebu-prestashop/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "headline": "REBU en PrestaShop: cómo aplicar el IVA sobre el margen, paso a paso",
+      "inLanguage": "es",
+      "url": "https://lanabes.github.io/rebu-prestashop/",
+      "datePublished": "2026-10-02",
+      "dateModified": "2026-10-02",
+      "author": { "@type": "Organization", "name": "lanabes" },
+      "about": ["Régimen especial de bienes usados", "PrestaShop", "IVA"],
+      "proficiencyLevel": "Beginner"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "¿PrestaShop trae el REBU de serie?", "acceptedAnswer": { "@type": "Answer", "text": "No. PrestaShop solo calcula el IVA sobre el precio. La petición para que lo incluya, la issue 24231 de su repositorio, sigue abierta desde 2021. Esta guía lo resuelve con funciones que PrestaShop ya trae." } },
+        { "@type": "Question", "name": "¿Por qué el grupo se llama «REBU 21 %» si el impuesto es del 0 %?", "acceptedAnswer": { "@type": "Answer", "text": "El 0 % es lo que PrestaShop suma al precio: nada, porque el IVA del margen ya va dentro. El 21 % es el tipo que aplicarás al margen en tu declaración. La calculadora lee ese número del nombre del grupo." } },
+        { "@type": "Question", "name": "¿Qué pasa si vendo una pieza por menos de lo que me costó?", "acceptedAnswer": { "@type": "Answer", "text": "En el método de operación a operación, el margen negativo da una base de 0 y no se compensa con otras ventas. La calculadora lo aplica así y te lo señala." } },
+        { "@type": "Question", "name": "¿Funciona en PrestaShop 8?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. La guía está comprobada en PrestaShop 8.2.8 y 9.2.0, con pedidos y facturas reales. Los menús son los mismos; la única diferencia es que en la 8 la regla de impuestos se añade en un formulario debajo del grupo, no en una ventana." } },
+        { "@type": "Question", "name": "¿Se envían mis pedidos a algún sitio?", "acceptedAnswer": { "@type": "Answer", "text": "No. La calculadora lee el archivo en tu navegador y hace las cuentas allí mismo. No se envía ni se guarda en ningún servidor." } }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="./" aria-label="REBU, IVA sobre el margen: inicio">
+      <svg viewBox="0 0 1000 1000" aria-hidden="true"><rect width="1000" height="1000" rx="220" fill="#1F4436"/><path d="M439 175h122q14 0 22 11.5l155.5 222.1Q750 425 750 445v335q0 45-45 45H295q-45 0-45-45V445q0-20 11.5-36.4L417 186.5q8-11.5 22-11.5Z" fill="#F2EBDC"/><circle cx="500" cy="237.5" r="37.5" fill="#1F4436"/><rect x="350" y="500" width="300" height="75" rx="37.5" fill="#1F4436"/><rect x="350" y="650" width="175" height="75" rx="37.5" fill="#1F4436"/></svg>
+      REBU <span>IVA sobre el margen</span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="./factura-rebu/">Factura</a>
+      <a href="#guia" class="hide-sm" aria-current="page">PrestaShop</a>
+      <a href="./calculadora/">Calculadora</a>
+      <a href="fr/" class="lang" hreflang="fr" lang="fr" aria-label="Version française">FR</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>El IVA, solo sobre el margen.</h1>
+      <p class="lead">Guía gratuita y calculadora para aplicar el régimen especial de bienes usados en una tienda PrestaShop. Probada paso a paso en PrestaShop 8.2 y 9.2.</p>
+      <div class="ctas">
+        <a class="btn" href="calculadora/">Calcular mi trimestre <svg class="i" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></a>
+        <a class="btn btn-ghost" href="#guia">Leer la guía</a>
+      </div>
+      <p class="assure"><svg class="i" aria-hidden="true"><use href="assets/icons.svg#lock"/></svg> Sin registro. Tus pedidos no salen de tu ordenador.</p>
+    </div>
+
+    <div class="stage">
+      <svg class="string" viewBox="0 0 160 124" fill="none" aria-hidden="true"><path class="twine-shadow" d="M123 1C117 35 75 53 81 83" stroke-width="2" stroke-linecap="round"/><path class="twine" d="M122 0C116 34 74 52 80 82" stroke-width="2" stroke-linecap="round"/></svg>
+      <div class="tag" id="tag">
+        <svg class="tag-cap" viewBox="0 0 340 74" preserveAspectRatio="none" aria-hidden="true"><path d="M0 74V66q0-8 6-14L96 6q8-6 18-6h112q10 0 18 6l90 46q6 6 6 14v8Z"/><circle class="hole" cx="170" cy="34" r="9"/></svg>
+        <div class="tag-body">
+          <h2 class="sr-only">Prueba el cálculo con una pieza</h2>
+          <div class="tag-row"><label for="t-buy">Te costó</label><span class="tag-input"><input id="t-buy" inputmode="decimal" autocomplete="off" value="300" aria-describedby="t-note"><span aria-hidden="true">€</span></span></div>
+          <div class="tag-row"><label for="t-sell">La vendes por</label><span class="tag-input"><input id="t-sell" inputmode="decimal" autocomplete="off" value="450" aria-describedby="t-note"><span aria-hidden="true">€</span></span></div>
+          <div class="tag-perf" aria-hidden="true"></div>
+          <div class="tag-row"><span class="k">Margen</span><span class="v" id="t-margin">150,00 €</span></div>
+          <div class="tag-row tag-total" aria-live="polite"><span class="k">IVA a declarar</span><span class="v" id="t-quota">26,03 €</span></div>
+          <div class="tag-rates" role="group" aria-label="Tipo de IVA del artículo">
+            <button type="button" data-rate="21" aria-pressed="true">21 %</button>
+            <button type="button" data-rate="10" aria-pressed="false">10 %</button>
+            <button type="button" data-rate="4" aria-pressed="false">4 %</button>
+          </div>
+          <p class="tag-note" id="t-note">Con el IVA sobre el precio entero serían <strong id="t-full">78,10 €</strong>.</p>
+        </div>
+      </div>
+      <p class="stage-caption">Cambia las cifras de la etiqueta. Es el mismo cálculo que hace la calculadora con cada venta.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section band" id="que-es" aria-labelledby="que-es-t">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="que-es-t">Qué es el REBU, en dos frases</h2>
+      <p>Si revendes artículos usados que compraste a particulares, puedes pagar el IVA solo sobre lo que ganas con cada pieza, no sobre el precio entero. Es el régimen especial de los bienes usados (Ley 37/1992 del IVA, artículos 135 a 139), y PrestaShop no lo trae de serie.</p>
+    </div>
+    <dl class="example" aria-label="Ejemplo con una pieza al 21 %">
+      <div><dt>Te costó</dt><dd>300,00 €</dd></div>
+      <div><dt>La vendes por</dt><dd>450,00 €</dd></div>
+      <div><dt>Margen</dt><dd>150,00 €<span class="op">450 − 300</span></dd></div>
+      <div><dt>Base imponible</dt><dd>123,97 €<span class="op">150 × 100 / 121</span></dd></div>
+      <div class="hl"><dt>IVA a declarar</dt><dd>26,03 €<span class="op">123,97 × 21 %</span></dd></div>
+    </dl>
+    <p class="section-link"><a href="factura-rebu/">Cómo es una factura REBU, con un modelo para rellenar e imprimir <svg class="i i-sm" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></a></p>
+  </div>
+</section>
+
+<section class="section" id="guia" aria-label="Guía">
+  <div class="wrap guide">
+    <nav class="toc" aria-label="En esta guía">
+      <p>En esta guía</p>
+      <ol>
+        <li><a href="#antes">Antes de empezar</a></li>
+        <li><a href="#pasos">Configúralo en cinco pasos</a></li>
+        <li><a href="#calcular">Calcula cada trimestre</a></li>
+        <li><a href="#alcance">Qué cubre y qué no</a></li>
+        <li><a href="#preguntas">Preguntas frecuentes</a></li>
+      </ol>
+    </nav>
+
+    <article class="prose">
+      <h2 id="antes">Antes de empezar</h2>
+      <p>El REBU se aplica a la venta de bienes muebles usados que se pueden volver a utilizar. <strong>Que una pieza concreta pueda ir por el REBU depende de a quién se la compraste</strong> (artículo 135 de la ley): el caso típico es la compra a un particular. Por eso eres tú quien marca qué artículos van por este régimen; ninguna herramienta lo puede saber.</p>
+      <p>Lo que vas a montar usa solo funciones que PrestaShop ya trae. Los artículos de segunda mano se venden sin sumarles IVA, porque el IVA del margen ya va dentro del precio. La factura lleva la mención obligatoria. Cada venta guarda lo que te costó la pieza. Y cada trimestre sacas un archivo con tus ventas para calcular la base del margen.</p>
+      <div class="note warn" role="note">
+        <svg class="i" aria-hidden="true"><use href="assets/icons.svg#alert"/></svg>
+        <div><p><strong>Esta guía te ayuda a calcular y documentar, no es asesoramiento fiscal.</strong> Decidir si aplicas el REBU, a qué artículos y cómo lo declaras os corresponde a ti y a tu asesor. Enséñale esta configuración antes de usarla.</p></div>
+      </div>
+
+      <h2 id="pasos">Configúralo en cinco pasos</h2>
+      <p class="muted">Comprobado en tiendas de prueba PrestaShop 9.2.0 (2 de octubre de 2026) y 8.2.8 (3 de octubre), con los menús en castellano. Los menús son los mismos en las dos versiones.</p>
+
+      <ol class="steps">
+        <li class="step" id="paso-1">
+          <h3>Crea un impuesto «REBU» al 0 %</h3>
+          <p>Ve a <span class="path">Internacional<span class="sep">›</span>Impuestos</span> y pulsa <strong>Añadir nuevo impuesto</strong>.</p>
+          <dl class="fields">
+            <dt>Nombre</dt><dd>REBU</dd>
+            <dt>Tasa</dt><dd>0</dd>
+            <dt>Activar</dt><dd>Sí</dd>
+          </dl>
+          <p class="muted">Hace falta aunque parezca raro. PrestaShop solo deja elegir en un producto los grupos de impuestos que tienen al menos un impuesto activo dentro; un grupo vacío no aparece en la lista.</p>
+        </li>
+
+        <li class="step" id="paso-2">
+          <h3>Crea el grupo «REBU 21 %»</h3>
+          <p>En la misma sección, abre la pestaña <strong>Reglas de impuestos</strong> y pulsa <strong>Añadir nuevo grupo de reglas de impuestos</strong>. Ponle de nombre <strong>REBU 21 %</strong>, actívalo y pulsa <strong>Guardar y permanecer</strong>.</p>
+          <p>Debajo aparece el botón <strong>Add a tax rule</strong> (en la 9.2 sale en inglés). Rellena la ventana así y guarda:</p>
+          <figure>
+            <div class="shot"><img src="img/ps-regla-rebu.png" width="2278" height="920" alt="Ventana «Añadir nueva regla de impuestos» de PrestaShop con País: Todos los países, Comportamiento: Sólo este impuesto e Impuestos: REBU (0.000%)." loading="lazy" decoding="async"></div>
+            <figcaption>País: Todos los países. Comportamiento: Sólo este impuesto. Impuestos: REBU (0.000%). Se crea una regla para cada país, todas al 0 %.</figcaption>
+          </figure>
+          <p class="muted">En PrestaShop 8 no sale una ventana: la regla se añade en el formulario «Nueva regla de impuestos» que aparece debajo del grupo, con los mismos valores (País: Todas) y el botón «Guardar y permanecer».</p>
+          <p>Si alguno de tus artículos de segunda mano lleva un tipo reducido, crea también <strong>REBU 10 %</strong> o <strong>REBU 4 %</strong> de la misma forma. El número del nombre es el tipo que la calculadora aplicará al margen.</p>
+        </li>
+
+        <li class="step" id="paso-3">
+          <h3>Pon el grupo y el coste en cada artículo de segunda mano</h3>
+          <p>En <span class="path">Catálogo<span class="sep">›</span>Productos</span>, abre el artículo y ve a la pestaña <strong>Precio</strong>.</p>
+          <ul>
+            <li><strong>Regla de impuestos:</strong> REBU 21 % (o el que toque).</li>
+            <li><strong>Precio de venta:</strong> el precio final. Como el impuesto es del 0 %, el precio con impuestos y sin impuestos coinciden. El IVA del margen ya va dentro.</li>
+            <li><strong>Precio de coste:</strong> lo que pagaste por esa pieza. PrestaShop lo guarda en cada pedido tal como estaba en el momento de la venta.</li>
+          </ul>
+          <figure>
+            <div class="shot"><img src="img/ps-producto-precio.png" width="1520" height="576" alt="Pestaña Precio de un producto en PrestaShop 9.2: precio de venta 450, regla de impuestos REBU 21 % con impuesto 0 %, y precio de coste 300." loading="lazy" decoding="async"></div>
+            <figcaption>Un artículo de prueba: se vende por 450 €, costó 300 € y no se le suma IVA.</figcaption>
+          </figure>
+          <div class="note" role="note">
+            <svg class="i" aria-hidden="true"><use href="assets/icons.svg#info"/></svg>
+            <div><p><strong>El precio de coste es uno por producto.</strong> Si tienes varias piezas iguales que te costaron distinto, actualiza el coste antes de vender cada una, o corrígelo después línea a línea en la calculadora.</p></div>
+          </div>
+        </li>
+
+        <li class="step" id="paso-4">
+          <h3>Añade la mención a la factura</h3>
+          <p>En <span class="path">Pedidos<span class="sep">›</span>Facturas</span>, baja hasta <strong>Opciones de factura</strong> y escribe en <strong>Texto legal libre</strong>:</p>
+          <figure>
+            <div class="shot"><img src="img/ps-texto-legal.png" width="1622" height="202" alt="Campo «Texto legal libre» de PrestaShop con el texto «Régimen especial de los bienes usados»." loading="lazy" decoding="async"></div>
+            <figcaption>Es la mención que exige el Reglamento de facturación (RD 1619/2012, artículo 6.1.o). Sale en la factura debajo del método de pago.</figcaption>
+          </figure>
+          <p><strong>Si tu tienda tiene varios idiomas</strong>, el campo lleva un selector de idioma a la derecha: rellénalo en cada uno, porque la factura sale en el idioma del pedido. Al instalar un idioma nuevo, PrestaShop copia el texto que hubiera, así que revísalo.</p>
+          <p>Con esto, la factura no desglosa IVA en esos artículos, como pide el artículo 138 de la ley. Mira en <a href="#alcance">qué cubre y qué no</a> cómo queda la factura exactamente.</p>
+        </li>
+
+        <li class="step" id="paso-5">
+          <h3>Saca cada trimestre el archivo de ventas con el coste</h3>
+          <p>La exportación normal de pedidos no trae el coste. Para sacarlo, ve a <span class="path">Parámetros Avanzados<span class="sep">›</span>Base de datos</span>, pestaña <strong>Gestor SQL</strong>, y pulsa <strong>Añadir una nueva consulta SQL</strong>. Ponle un nombre, por ejemplo «Pedidos para la calculadora REBU», pega esta consulta y guarda:</p>
+          <div class="code">
+            <div class="code-head"><span>Consulta para el Gestor SQL</span><button type="button" class="copy" data-copy="sql" aria-label="Copiar la consulta"><svg class="i idle" aria-hidden="true"><use href="assets/icons.svg#copy"/></svg><svg class="i ok" aria-hidden="true"><use href="assets/icons.svg#check"/></svg><span class="lbl">Copiar</span></button></div>
+<pre id="sql"><code><span class="kw">SELECT</span>
+  o.id_order <span class="kw">AS</span> pedido,
+  o.reference <span class="kw">AS</span> referencia,
+  o.invoice_number <span class="kw">AS</span> factura,
+  o.invoice_date <span class="kw">AS</span> fecha_factura,
+  od.product_name <span class="kw">AS</span> producto,
+  od.product_quantity <span class="kw">AS</span> unidades,
+  od.product_quantity_refunded <span class="kw">AS</span> devueltas,
+  od.total_price_tax_incl <span class="kw">AS</span> venta_total,
+  od.original_wholesale_price <span class="kw">AS</span> coste_unitario,
+  trg.name <span class="kw">AS</span> grupo_impuestos,
+  od.tax_rate <span class="kw">AS</span> iva_tienda
+<span class="kw">FROM</span> ps_order_detail od
+<span class="kw">INNER JOIN</span> ps_orders o <span class="kw">ON</span> o.id_order = od.id_order
+<span class="kw">LEFT JOIN</span> ps_tax_rules_group trg
+  <span class="kw">ON</span> trg.id_tax_rules_group = od.id_tax_rules_group
+<span class="kw">WHERE</span> o.valid = 1 <span class="kw">AND</span> o.invoice_number &gt; 0
+<span class="kw">ORDER BY</span> o.invoice_date, o.id_order</code></pre>
+          </div>
+          <p>En la lista de consultas, el botón con la nube la exporta. PrestaShop descarga un archivo llamado <code>request_sql_1.csv</code> (el número cambia) con todas las líneas de los pedidos válidos que tienen factura.</p>
+          <p class="muted">Si en la «Lista de tablas de MySQL» de esa misma pantalla tus tablas no empiezan por <code>ps_</code>, cambia <code>ps_</code> por tu prefijo en las tres tablas de la consulta.</p>
+        </li>
+      </ol>
+
+      <h2 id="calcular">Calcula la base de cada trimestre</h2>
+      <p>Sube el archivo a la <a href="calculadora/">calculadora</a>. Separa tus ventas por trimestre (según la fecha de la factura) y por tipo de IVA, y te da la base imponible del margen y su cuota. Reconoce solas las líneas del grupo REBU y deja fuera las de productos nuevos.</p>
+      <ul>
+        <li><strong>Margen</strong> = precio de venta − lo que te costó. Los dos, con todo lo que pagaste.</li>
+        <li><strong>Base imponible</strong> = margen × 100 / (100 + tipo). Es el margen sin el IVA que lleva dentro.</li>
+        <li><strong>Margen negativo:</strong> la base es 0 y no se resta de otras ventas. Así funciona el método de operación a operación, que es el que usa la calculadora.</li>
+      </ul>
+      <p>Puedes corregir el coste o el precio de cualquier línea, desmarcar las que no vayan por el REBU y descargar el detalle para tu asesor. El archivo se lee en tu navegador y no sale de tu ordenador.</p>
+      <p class="ctas-inline"><a class="btn" href="calculadora/">Abrir la calculadora <svg class="i" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></a> <a class="btn btn-ghost" href="calculadora/#ejemplo">Ver un ejemplo</a></p>
+
+      <h2 id="alcance">Qué cubre este apaño y qué no</h2>
+      <p>Lo hemos probado con un pedido real que mezclaba una pieza de segunda mano y un producto nuevo, enviado a Francia. Así quedó la factura que generó PrestaShop:</p>
+      <figure>
+        <div class="shot"><img src="img/ps-factura.png" width="1100" height="520" alt="Factura de PrestaShop: la pieza REBU de 450 € con tasa de impuesto 0 % y el producto nuevo con 21 %; el desglose de impuestos solo recoge el 21 %; abajo, la mención «Régimen especial de los bienes usados»." loading="lazy" decoding="async"></div>
+        <figcaption>La pieza REBU va sin cuota de IVA y con la mención al pie. El producto nuevo lleva su 21 % como siempre.</figcaption>
+      </figure>
+      <div class="scope">
+        <div class="yes">
+          <h3><svg class="i" aria-hidden="true"><use href="assets/icons.svg#check"/></svg>Lo que resuelve</h3>
+          <ul>
+            <li>No se suma IVA a los artículos REBU, tampoco el del país de destino si vendes a otro país de la UE.</li>
+            <li>La factura no desglosa cuota en esos artículos y lleva la mención obligatoria.</li>
+            <li>Cada venta guarda lo que costó la pieza.</li>
+            <li>La base del margen por trimestre y tipo, con el método de operación a operación.</li>
+          </ul>
+        </div>
+        <div class="no">
+          <h3><svg class="i" aria-hidden="true"><use href="assets/icons.svg#alert"/></svg>Lo que no</h3>
+          <ul>
+            <li>La factura pone «0 %» en la columna de impuesto de la pieza REBU. No es una cuota, pero coméntalo con tu asesor.</li>
+            <li>La mención sale en todas las facturas, también en las que solo llevan productos nuevos.</li>
+            <li>Los cupones de descuento y los gastos de envío no entran en la consulta. Si los usas, ajusta la venta en la calculadora.</li>
+            <li>El método global, los abonos y el documento de cada compra a un particular. Pregúntale a tu asesor cómo los llevas.</li>
+            <li>Si usas un módulo de Verifactu, confirma con su proveedor cómo trata las ventas en REBU.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 id="preguntas">Preguntas frecuentes</h2>
+      <div class="faq">
+        <details>
+          <summary>¿PrestaShop trae el REBU de serie?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="a"><p>No. PrestaShop solo calcula el IVA sobre el precio. La petición para que lo incluya, la <a href="https://github.com/PrestaShop/PrestaShop/issues/24231" rel="noopener">issue 24231</a> de su repositorio, sigue abierta desde 2021. Esta guía lo resuelve con funciones que PrestaShop ya trae.</p></div>
+        </details>
+        <details>
+          <summary>¿Por qué el grupo se llama «REBU 21 %» si el impuesto es del 0 %?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="a"><p>El 0 % es lo que PrestaShop suma al precio: nada, porque el IVA del margen ya va dentro. El 21 % es el tipo que aplicarás al margen en tu declaración. La calculadora lee ese número del nombre del grupo.</p></div>
+        </details>
+        <details>
+          <summary>¿Qué pasa si vendo una pieza por menos de lo que me costó?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="a"><p>En el método de operación a operación, el margen negativo da una base de 0 y no se compensa con otras ventas. La calculadora lo aplica así y te lo señala.</p></div>
+        </details>
+        <details>
+          <summary>¿Y si vendo productos nuevos y usados en la misma tienda?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="a"><p>Funciona: los nuevos siguen con su grupo de IVA normal y la calculadora los deja fuera. Lo único que no puedes evitar es que la mención salga en todas las facturas, porque el texto legal libre es el mismo para todas las facturas de un idioma.</p></div>
+        </details>
+        <details>
+          <summary>¿Funciona en PrestaShop 8?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="a"><p>Sí. La guía está comprobada en PrestaShop 8.2.8 y 9.2.0, con pedidos y facturas reales. Los menús son los mismos; la única diferencia es que en la 8 la regla de impuestos se añade en un formulario debajo del grupo, no en una ventana.</p></div>
+        </details>
+        <details>
+          <summary>¿Se envían mis pedidos a algún sitio?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="a"><p>No. La calculadora lee el archivo en tu navegador y hace las cuentas allí mismo. No se envía ni se guarda en ningún servidor. Esta web tampoco usa cookies ni herramientas de analítica.</p></div>
+        </details>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="modulo" aria-labelledby="modulo-t" hidden>
+  <div class="wrap">
+    <div class="waitlist">
+      <div>
+        <h2 id="modulo-t">¿Te ahorraría trabajo que tu tienda lo hiciera sola?</h2>
+        <p>Estamos midiendo si interesa una herramienta para tu tienda online, empezando por PrestaShop, que resuelva lo que este apaño no puede. Dinos con qué vendes y la haremos para la plataforma que más se pida.</p>
+        <a class="btn" id="waitlist-link" href="#" rel="noopener">Avísame si sale <svg class="i" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></a>
+        <small>Solo es obligatorio el correo y con qué vendes: los usamos para avisarte una vez y los borramos si la herramienta no sale. El formulario es de Google Forms.</small>
+      </div>
+      <ul>
+        <li><svg class="i" aria-hidden="true"><use href="assets/icons.svg#check"/></svg>Facturas sin la columna «0 %» en las piezas REBU.</li>
+        <li><svg class="i" aria-hidden="true"><use href="assets/icons.svg#check"/></svg>La mención solo en las facturas que llevan artículos REBU.</li>
+        <li><svg class="i" aria-hidden="true"><use href="assets/icons.svg#check"/></svg>El coste de cada pieza, aunque tengas varias iguales.</li>
+        <li><svg class="i" aria-hidden="true"><use href="assets/icons.svg#check"/></svg>El libro registro y el informe del trimestre dentro de la tienda.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p class="disclaimer">Herramienta de cálculo y documentación. No es asesoramiento fiscal: aplicar el régimen y revisar las cifras corresponde al comerciante y a su asesor.</p>
+      <p>Sin cookies ni analítica. Hecho por lanabes. Última revisión: 2 de octubre de 2026.</p>
+    </div>
+    <nav aria-label="Pie">
+      <a href="./factura-rebu/">Factura REBU</a>
+      <a href="#guia">Guía PrestaShop</a>
+      <a href="./calculadora/">Calculadora</a>
+      <a href="fr/" hreflang="fr" lang="fr">Version française</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" id="toast"></div>
+
+<script src="assets/config.js"></script>
+<script type="module" src="assets/home.js"></script>
+<script type="module" src="assets/waitlist.js"></script>
+</body>
+</html>

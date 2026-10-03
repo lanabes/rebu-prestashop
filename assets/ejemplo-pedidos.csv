@@ -1,0 +1,12 @@
+pedido;referencia;factura;fecha_factura;producto;unidades;devueltas;venta_total;coste_unitario;grupo_impuestos;iva_tienda
+1041;EJEMPLO-A;212;"2026-07-03 10:14:22";"[Ejemplo] Consola Super Nintendo PAL con caja";1;0;189.000000;95.000000;"REBU 21 %";0.000
+1042;EJEMPLO-B;213;"2026-07-09 18:40:05";"[Ejemplo] Cámara Canon AE-1 con objetivo 50 mm";1;0;245.000000;130.000000;"REBU 21 %";0.000
+1042;EJEMPLO-B;213;"2026-07-09 18:40:05";"[Ejemplo] Correa nueva para cámara";1;0;14.950000;6.200000;"ES Standard rate (21%)";21.000
+1047;EJEMPLO-C;218;"2026-07-21 12:02:51";"[Ejemplo] iPhone 12 128 GB reacondicionado";2;0;598.000000;231.500000;"REBU 21 %";0.000
+1053;EJEMPLO-D;224;"2026-08-04 09:31:10";"[Ejemplo] Lote de 12 cómics antiguos";1;0;36.000000;0.000000;"REBU 4 %";0.000
+1058;EJEMPLO-E;229;"2026-08-18 20:15:44";"[Ejemplo] Chaqueta vaquera vintage talla M";1;0;42.500000;55.000000;"REBU 21 %";0.000
+1063;EJEMPLO-F;234;"2026-09-02 11:48:37";"[Ejemplo] Vinilo LP primera edición";1;1;64.000000;28.000000;"REBU 21 %";0.000
+1066;EJEMPLO-G;237;"2026-09-15 17:22:09";"[Ejemplo] Novela de bolsillo, edición de 1971";1;0;12.900000;3.500000;"REBU 4 %";0.000
+1070;EJEMPLO-H;241;"2026-09-29 13:05:58";"[Ejemplo] Reloj de pulsera automático años 80";1;0;320.000000;210.000000;"";0.000
+1074;EJEMPLO-I;0;"0000-00-00 00:00:00";"[Ejemplo] Lámpara de latón de los años 60";1;0;85.000000;40.000000;"REBU 21 %";0.000
+1076;EJEMPLO-J;245;"2026-10-01 16:37:12";"[Ejemplo] Consola Game Boy Color";1;0;79.000000;45.000000;"REBU 21 %";0.000
