@@ -15,11 +15,11 @@ const TXT = {
   fr: {
     pending: { tone: 'idle', title: 'Choisissez une réponse à chaque question', body: 'La réponse s’affiche ici, avec l’article sur lequel elle s’appuie.' },
     excluded: { tone: 'no', title: 'Non : ce n’est pas un bien d’occasion au sens du régime', body: 'La définition exclut les métaux précieux et les pierres précieuses (CGI, annexe III, article 98 A). Les œuvres d’art, objets de collection et d’antiquité relèvent d’une autre catégorie du même régime.' },
-    yes: { tone: 'yes', title: 'Oui, la marge peut s’appliquer', body: 'Le bien vous a été livré par un non-redevable de la TVA ou par une personne qui n’était pas autorisée à facturer la TVA sur cette vente (article 297 A du CGI). La TVA porte sur la marge et n’apparaît pas sur la facture.' },
+    yes: { tone: 'yes', title: 'Oui, la marge peut s’appliquer', body: 'Le bien vous a été livré par un non-redevable de la TVA ou par une personne qui n’était pas autorisée à facturer la TVA sur cette vente (article 297 A du CGI ; BOFiP BOI-TVA-SECT-90-20-20, § 60 à 80). La TVA porte sur la marge et n’apparaît pas sur la facture.' },
     yesArt: { tone: 'yes', title: 'Oui, le même régime, avec sa propre mention', body: 'Les œuvres d’art, objets de collection et objets d’antiquité (plus de cent ans) relèvent du même régime (article 297 A du CGI ; annexe III, article 98 A), avec leur mention : « Régime particulier-Objets d’art » ou « Objets de collection et d’antiquité ».' },
     general: { tone: 'no', title: 'Non : c’est le régime normal', body: 'Si le vendeur vous a facturé la TVA sur cette vente, la condition de l’article 297 A n’est pas remplie. Vous déduisez la TVA d’achat et facturez la TVA sur le prix total.' },
     other: { tone: 'maybe', title: 'Cela dépend : voyez avec votre expert-comptable', body: 'Le critère est de savoir si votre vendeur était redevable de la TVA et autorisé à la facturer sur cette vente. Avec les éléments de votre cas, votre expert-comptable tranchera.' },
-    opt: '',
+    opt: 'Même si la marge s’applique, vous pouvez choisir le régime normal pour chaque vente et déduire la TVA d’achat (article 297 C du CGI).',
   },
 }[lang];
 
