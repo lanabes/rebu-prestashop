@@ -85,20 +85,20 @@
       <div>
         <fieldset>
           <legend><span class="n" aria-hidden="true">1</span>Que vendez-vous&nbsp;?</legend>
-          <div class="opts">
-            <label class="opt"><input type="radio" name="d-what" value="used"><span><b>Un bien d’occasion</b><small>Vêtements, téléphones, meubles, appareils photo, livres, outils…</small></span></label>
-            <label class="opt"><input type="radio" name="d-what" value="art"><span><b>Œuvre d’art, antiquité ou objet de collection</b><small>Œuvre originale, objet de plus de cent ans, timbres, monnaies de collection…</small></span></label>
-            <label class="opt"><input type="radio" name="d-what" value="excluded"><span><b>Métaux précieux ou pierres précieuses</b><small>Or, platine, pierres…</small></span></label>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="d-what" value="used"><span><b>Un bien d’occasion</b><small>Vêtements, téléphones, meubles, appareils photo, livres, outils…</small></span></label>
+            <label class="choice"><input type="radio" name="d-what" value="art"><span><b>Œuvre d’art, antiquité ou objet de collection</b><small>Œuvre originale, objet de plus de cent ans, timbres, monnaies de collection…</small></span></label>
+            <label class="choice"><input type="radio" name="d-what" value="excluded"><span><b>Métaux précieux ou pierres précieuses</b><small>Or, platine, pierres…</small></span></label>
           </div>
         </fieldset>
         <fieldset>
           <legend><span class="n" aria-hidden="true">2</span>Qui vous l’a vendue&nbsp;?</legend>
-          <div class="opts">
-            <label class="opt"><input type="radio" name="d-from" value="private"><span><b>Un particulier</b><small>Quelqu’un qui n’est pas redevable de la TVA</small></span></label>
-            <label class="opt"><input type="radio" name="d-from" value="reseller"><span><b>Un revendeur, sous le régime de la marge</b><small>Sa facture porte la mention du régime et pas de TVA</small></span></label>
-            <label class="opt"><input type="radio" name="d-from" value="franchise"><span><b>Une entreprise en franchise en base de TVA</b><small>Sa facture indique que la TVA n’est pas applicable</small></span></label>
-            <label class="opt"><input type="radio" name="d-from" value="general"><span><b>Une entreprise qui m’a facturé la TVA</b><small>La facture fait apparaître un montant de TVA</small></span></label>
-            <label class="opt"><input type="radio" name="d-from" value="other"><span><b>Autre cas</b><small>Une entreprise d’un autre pays, une vente aux enchères…</small></span></label>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="d-from" value="private"><span><b>Un particulier</b><small>Quelqu’un qui n’est pas redevable de la TVA</small></span></label>
+            <label class="choice"><input type="radio" name="d-from" value="reseller"><span><b>Un revendeur, sous le régime de la marge</b><small>Sa facture porte la mention du régime et pas de TVA</small></span></label>
+            <label class="choice"><input type="radio" name="d-from" value="franchise"><span><b>Une entreprise en franchise en base de TVA</b><small>Sa facture indique que la TVA n’est pas applicable</small></span></label>
+            <label class="choice"><input type="radio" name="d-from" value="general"><span><b>Une entreprise qui m’a facturé la TVA</b><small>La facture fait apparaître un montant de TVA</small></span></label>
+            <label class="choice"><input type="radio" name="d-from" value="other"><span><b>Autre cas</b><small>Une entreprise d’un autre pays, une vente aux enchères…</small></span></label>
           </div>
         </fieldset>
       </div>
@@ -114,6 +114,7 @@
         </div>
         <p id="d-body">La réponse s’affiche ici, avec l’article sur lequel elle s’appuie.</p>
         <p class="extra" id="d-opt" hidden></p>
+        <p class="cta" id="d-cta" hidden><a data-nudge-link href="#" target="_blank" rel="noopener">Votre boutique pourrait-elle trier ces pièces toute seule ? Prévenez-moi <svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#arrow-right"/></svg><span class="sr-only"> (s’ouvre dans un nouvel onglet)</span></a></p>
         <p class="fine">Un repère, pas une décision&nbsp;: les biens qui relèvent de la marge, vous en décidez avec votre expert-comptable.</p>
       </div>
     </form>

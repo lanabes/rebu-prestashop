@@ -1,16 +1,20 @@
 // Lista de espera: la sección solo se enseña cuando hay un formulario de verdad detrás
 // (enlace en config.js). Un botón que no apunta a nada no se publica.
-const config = (window.REBU_CONFIG && window.REBU_CONFIG.waitlistUrl) || '';
-const lang = document.documentElement.lang === 'fr' ? 'fr' : 'es';
-const other = lang === 'fr' ? 'es' : 'fr';
-const valid = (u) => typeof u === 'string' && /^https:\/\//.test(u);
-// Accepts a single link (string) or one per language ({ es, fr }).
-const url = typeof config === 'string'
-  ? config
-  : [config[lang], config[other]].find(valid) || '';
+import { waitlistUrl } from './waitlist-url.js';
+
+const url = waitlistUrl();
 const section = document.getElementById('modulo');
-if (section && valid(url)) {
+if (section && url) {
   const link = document.getElementById('waitlist-link');
   if (link) link.href = url;
   section.hidden = false;
+}
+
+// Llamadas en el momento justo (junto a una descarga o un resultado). Abren el
+// formulario en otra pestaña para no perder lo que la persona tenía en pantalla.
+if (url) {
+  document.querySelectorAll('[data-nudge]').forEach((el) => {
+    el.querySelectorAll('a[data-nudge-link]').forEach((a) => { a.href = url; });
+    el.hidden = false;
+  });
 }

@@ -1,5 +1,6 @@
 // «¿Puede ir esta pieza por el REBU / la marge?»: dos preguntas (qué es y a quién se
 // compró) y una respuesta con su artículo. Solo orienta: la página lo dice al lado.
+import { waitlistUrl } from './waitlist-url.js';
 const lang = document.documentElement.lang === 'fr' ? 'fr' : 'es';
 
 const TXT = {
@@ -30,7 +31,10 @@ if (root) {
     title: document.getElementById('d-title'),
     body: document.getElementById('d-body'),
     opt: document.getElementById('d-opt'),
+    cta: document.getElementById('d-cta'),
   };
+  const url = waitlistUrl();
+  if (out.cta && url) out.cta.querySelector('a').href = url;
   let ready = false;
   const value = (name) => root.querySelector(`input[name="${name}"]:checked`)?.value || null;
 
@@ -55,6 +59,8 @@ if (root) {
     out.body.textContent = r.body;
     const showOpt = Boolean(TXT.opt) && (r === TXT.yes || r === TXT.yesArt);
     out.opt.hidden = !showOpt;
+    // When the answer is «yes», the person has exactly the problem a tool would solve.
+    if (out.cta) out.cta.hidden = !(url && (r === TXT.yes || r === TXT.yesArt));
     if (showOpt) out.opt.textContent = TXT.opt;
   };
 

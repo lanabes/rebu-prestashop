@@ -85,19 +85,19 @@
       <div>
         <fieldset>
           <legend><span class="n" aria-hidden="true">1</span>¿Qué vas a vender?</legend>
-          <div class="opts">
-            <label class="opt"><input type="radio" name="d-what" value="used"><span><b>Un bien usado</b><small>Ropa, móviles, muebles, cámaras, libros, herramientas…</small></span></label>
-            <label class="opt"><input type="radio" name="d-what" value="art"><span><b>Arte, antigüedad o colección</b><small>Obra original, objeto de más de cien años, sellos, monedas de colección…</small></span></label>
-            <label class="opt"><input type="radio" name="d-what" value="excluded"><span><b>Oro, platino, piedras preciosas, chatarra o envases</b><small>O algo que has usado, transformado o renovado tú</small></span></label>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="d-what" value="used"><span><b>Un bien usado</b><small>Ropa, móviles, muebles, cámaras, libros, herramientas…</small></span></label>
+            <label class="choice"><input type="radio" name="d-what" value="art"><span><b>Arte, antigüedad o colección</b><small>Obra original, objeto de más de cien años, sellos, monedas de colección…</small></span></label>
+            <label class="choice"><input type="radio" name="d-what" value="excluded"><span><b>Oro, platino, piedras preciosas, chatarra o envases</b><small>O algo que has usado, transformado o renovado tú</small></span></label>
           </div>
         </fieldset>
         <fieldset>
           <legend><span class="n" aria-hidden="true">2</span>¿A quién se la compraste?</legend>
-          <div class="opts">
-            <label class="opt"><input type="radio" name="d-from" value="private"><span><b>A un particular</b><small>Alguien que no es empresario ni profesional</small></span></label>
-            <label class="opt"><input type="radio" name="d-from" value="reseller"><span><b>A otro revendedor, en REBU</b><small>Su factura lleva la mención del régimen y no desglosa el IVA</small></span></label>
-            <label class="opt"><input type="radio" name="d-from" value="general"><span><b>A una empresa o autónomo que me cobró IVA</b><small>La factura desglosa la cuota de IVA</small></span></label>
-            <label class="opt"><input type="radio" name="d-from" value="other"><span><b>Otro caso</b><small>Una empresa de otro país de la UE, una venta exenta, una subasta…</small></span></label>
+          <div class="choices">
+            <label class="choice"><input type="radio" name="d-from" value="private"><span><b>A un particular</b><small>Alguien que no es empresario ni profesional</small></span></label>
+            <label class="choice"><input type="radio" name="d-from" value="reseller"><span><b>A otro revendedor, en REBU</b><small>Su factura lleva la mención del régimen y no desglosa el IVA</small></span></label>
+            <label class="choice"><input type="radio" name="d-from" value="general"><span><b>A una empresa o autónomo que me cobró IVA</b><small>La factura desglosa la cuota de IVA</small></span></label>
+            <label class="choice"><input type="radio" name="d-from" value="other"><span><b>Otro caso</b><small>Una empresa de otro país de la UE, una venta exenta, una subasta…</small></span></label>
           </div>
         </fieldset>
       </div>
@@ -113,6 +113,7 @@
         </div>
         <p id="d-body">La respuesta sale aquí, con el artículo de la ley en el que se apoya.</p>
         <p class="extra" id="d-opt" hidden></p>
+        <p class="cta" id="d-cta" hidden><a data-nudge-link href="#" target="_blank" rel="noopener">¿Quieres que tu tienda separe sola las piezas REBU? Avísame si sale <svg class="i" aria-hidden="true"><use href="../assets/icons.svg#arrow-right"/></svg><span class="sr-only"> (se abre en otra pestaña)</span></a></p>
         <p class="fine">Orienta, no decide: qué piezas van por el REBU lo decidís tú y tu asesor.</p>
       </div>
     </form>

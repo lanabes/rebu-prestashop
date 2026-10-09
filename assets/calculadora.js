@@ -5,6 +5,7 @@ import {
   parseCSV, detectColumns, missingColumns, buildLines, computeLine, isCountable,
   summarize, parseNumber, parseDate, toCents, detailCSV, makeManualLine,
 } from './rebu-core.js';
+import { waitlistUrl } from './waitlist-url.js';
 
 const app = document.getElementById('app');
 const ICONS = app.dataset.icons;
@@ -71,6 +72,10 @@ const T = {
     print: 'Imprimir',
     lines: (n) => `${n} ${n === 1 ? 'línea' : 'líneas'}`,
     summaryTitle: (q) => `Trimestre ${q}`,
+    nudgeTitle: '¿Y si esto saliera solo de tu tienda, cada trimestre?',
+    nudgeText: 'Estamos midiendo si interesa una herramienta que lo haga sin exportar ni pegar nada. Si te interesa, apúntate y te avisamos una sola vez si sale.',
+    nudgeBtn: 'Avísame si sale',
+    newTab: '(se abre en otra pestaña)',
     summarySub: (n, ex) => `${n} ${n === 1 ? 'venta' : 'ventas'} en REBU${ex ? `, ${ex} ${ex === 1 ? 'línea fuera' : 'líneas fuera'} del régimen` : ''}`,
     kBase: 'Base imponible',
     kQuota: 'Cuota de IVA',
@@ -187,6 +192,10 @@ const T = {
     print: 'Imprimer',
     lines: (n) => `${n} ${n === 1 ? 'ligne' : 'lignes'}`,
     summaryTitle: (q) => `Trimestre ${q}`,
+    nudgeTitle: 'Et si votre boutique le faisait toute seule, chaque trimestre ?',
+    nudgeText: 'Nous mesurons l’intérêt pour un outil qui le ferait sans rien exporter ni coller. Si cela vous intéresse, inscrivez-vous : nous vous préviendrons une seule fois s’il sort.',
+    nudgeBtn: 'Prévenez-moi',
+    newTab: '(s’ouvre dans un nouvel onglet)',
     summarySub: (n, ex) => `${n} ${n === 1 ? 'vente' : 'ventes'} sous le régime de la marge${ex ? `, ${ex} ${ex === 1 ? 'ligne hors régime' : 'lignes hors régime'}` : ''}`,
     kBase: 'Base hors taxe',
     kQuota: 'TVA due',
@@ -566,7 +575,15 @@ function viewResult() {
       <p class="legal-line">${icon('alert')}<span>${T.legal}</span></p>
     </div>`;
 
-  return `<div class="result">${banner}${toolbar}${summaryPanel}${viewAdd()}${state.lines.length ? viewLines() : ''}</div>`;
+  // The call to the waitlist appears where the need is felt: right under a real result.
+  const url = waitlistUrl();
+  const nudge = q && !state.isSample && url ? `
+    <aside class="nudge" aria-label="${T.nudgeBtn}">
+      <p><b>${T.nudgeTitle}</b><span>${T.nudgeText}</span></p>
+      <a class="btn btn-sm" href="${esc(url)}" target="_blank" rel="noopener">${T.nudgeBtn} ${icon('arrow-right')}<span class="sr-only"> ${T.newTab}</span></a>
+    </aside>` : '';
+
+  return `<div class="result">${banner}${toolbar}${summaryPanel}${nudge}${viewAdd()}${state.lines.length ? viewLines() : ''}</div>`;
 }
 
 function viewAdd() {
