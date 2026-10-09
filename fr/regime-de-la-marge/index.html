@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TVA sur marge : définition, conditions et fonctionnement pour les biens d’occasion</title>
+<meta name="description" content="Qu’est-ce que la TVA sur marge, qui peut l’appliquer, quelles conditions et qu’est-ce qu’un bien d’occasion, d’après l’article 297 A du CGI. Avec un outil pour savoir si une pièce peut relever du régime de la marge.">
+<link rel="canonical" href="https://lanabes.github.io/rebu-prestashop/fr/regime-de-la-marge/">
+<link rel="alternate" hreflang="fr" href="https://lanabes.github.io/rebu-prestashop/fr/regime-de-la-marge/">
+<link rel="alternate" hreflang="es" href="https://lanabes.github.io/rebu-prestashop/regimen-bienes-usados/">
+<meta name="theme-color" content="#F5F0E6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1512" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="TVA sur marge · biens d’occasion">
+<meta property="og:title" content="TVA sur marge : définition, conditions et fonctionnement">
+<meta property="og:description" content="Qui peut l’appliquer, à quels achats, et un outil pour vérifier vos pièces.">
+<meta property="og:url" content="https://lanabes.github.io/rebu-prestashop/fr/regime-de-la-marge/">
+<meta property="og:image" content="https://lanabes.github.io/rebu-prestashop/img/og-fr.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "TVA sur marge : définition, conditions et fonctionnement pour les biens d’occasion",
+      "inLanguage": "fr",
+      "url": "https://lanabes.github.io/rebu-prestashop/fr/regime-de-la-marge/",
+      "datePublished": "2026-10-09",
+      "dateModified": "2026-10-09",
+      "author": { "@type": "Organization", "name": "lanabes" },
+      "about": ["Régime de la marge", "TVA", "Biens d’occasion"]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Qu’est-ce que la TVA sur marge ?", "acceptedAnswer": { "@type": "Answer", "text": "Un régime particulier pour les assujettis revendeurs de biens d’occasion, d’œuvres d’art, d’objets de collection ou d’antiquité : la TVA est calculée sur la différence entre le prix de vente et le prix d’achat, et non sur le prix total (article 297 A du CGI). La facture ne fait pas apparaître la TVA (article 297 E)." } },
+        { "@type": "Question", "name": "Quelles sont les conditions de la TVA sur marge ?", "acceptedAnswer": { "@type": "Answer", "text": "Être assujetti revendeur, vendre un bien d’occasion (ou une œuvre d’art, un objet de collection ou d’antiquité), et que ce bien vous ait été livré par un non-redevable de la TVA ou par une personne qui n’était pas autorisée à facturer la TVA sur cette livraison (article 297 A, I, 1° du CGI)." } },
+        { "@type": "Question", "name": "Qu’est-ce qu’un bien d’occasion pour la TVA ?", "acceptedAnswer": { "@type": "Answer", "text": "Un bien meuble corporel susceptible de remploi, en l’état ou après réparation, autre qu’une œuvre d’art, un objet de collection ou d’antiquité, et autre que des métaux précieux ou des pierres précieuses (annexe III au CGI, article 98 A)." } },
+        { "@type": "Question", "name": "Peut-on appliquer la TVA sur marge à un bien acheté avec de la TVA ?", "acceptedAnswer": { "@type": "Answer", "text": "Non, si le vendeur vous a facturé la TVA sur cette vente : la condition de l’article 297 A n’est pas remplie. Le bien relève alors du régime normal, avec déduction de la TVA d’achat." } },
+        { "@type": "Question", "name": "Qu’est-ce que la globalisation de la TVA sur marge ?", "acceptedAnswer": { "@type": "Answer", "text": "Le calcul de la base sur l’ensemble d’une période, par la différence entre le total des ventes et le total des achats. Si les achats dépassent les ventes, l’excédent s’ajoute aux achats de la période suivante, et une régularisation des stocks a lieu chaque année (article 297 A, II du CGI)." } }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="TVA sur marge, biens d’occasion : accueil">
+      <svg viewBox="0 0 1000 1000" aria-hidden="true"><rect width="1000" height="1000" rx="220" fill="#1F4436"/><path d="M439 175h122q14 0 22 11.5l155.5 222.1Q750 425 750 445v335q0 45-45 45H295q-45 0-45-45V445q0-20 11.5-36.4L417 186.5q8-11.5 22-11.5Z" fill="#F2EBDC"/><circle cx="500" cy="237.5" r="37.5" fill="#1F4436"/><rect x="350" y="500" width="300" height="75" rx="37.5" fill="#1F4436"/><rect x="350" y="650" width="175" height="75" rx="37.5" fill="#1F4436"/></svg>
+      TVA sur marge <span>biens d’occasion</span>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="../facture-tva-sur-marge/">Facture</a>
+      <a href="../#guide" class="hide-sm">PrestaShop</a>
+      <a href="../calculatrice/">Calculatrice</a>
+      <a href="../../regimen-bienes-usados/" class="lang" hreflang="es" lang="es" aria-label="Versión en español">ES</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu">
+  <section class="calc-head">
+    <div class="wrap">
+      <h1>TVA sur marge&nbsp;: définition, conditions et fonctionnement</h1>
+      <p class="lead">Ce qu’est le régime de la marge des biens d’occasion, qui peut l’appliquer et à quels achats, le code général des impôts sous les yeux. Et un outil pour vérifier si une pièce peut en relever.</p>
+      <p class="answer"><svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#info"/></svg><span><strong>En une phrase&nbsp;:</strong> si vous revendez des biens d’occasion achetés à des particuliers (ou à quelqu’un qui ne pouvait pas vous facturer la TVA), vous payez la TVA seulement sur ce que vous gagnez sur chaque pièce, pas sur le prix total (article 297 A du CGI).</span></p>
+    </div>
+  </section>
+
+  <section class="wrap" aria-labelledby="decide-t">
+    <h2 id="decide-t" class="sr-only">Cette pièce peut-elle relever de la marge&nbsp;?</h2>
+    <form class="decide" id="decide" onsubmit="return false">
+      <div>
+        <fieldset>
+          <legend><span class="n" aria-hidden="true">1</span>Que vendez-vous&nbsp;?</legend>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="d-what" value="used"><span><b>Un bien d’occasion</b><small>Vêtements, téléphones, meubles, appareils photo, livres, outils…</small></span></label>
+            <label class="opt"><input type="radio" name="d-what" value="art"><span><b>Œuvre d’art, antiquité ou objet de collection</b><small>Œuvre originale, objet de plus de cent ans, timbres, monnaies de collection…</small></span></label>
+            <label class="opt"><input type="radio" name="d-what" value="excluded"><span><b>Métaux précieux ou pierres précieuses</b><small>Or, platine, pierres…</small></span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend><span class="n" aria-hidden="true">2</span>Qui vous l’a vendue&nbsp;?</legend>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="d-from" value="private"><span><b>Un particulier</b><small>Quelqu’un qui n’est pas redevable de la TVA</small></span></label>
+            <label class="opt"><input type="radio" name="d-from" value="reseller"><span><b>Un revendeur, sous le régime de la marge</b><small>Sa facture porte la mention du régime et pas de TVA</small></span></label>
+            <label class="opt"><input type="radio" name="d-from" value="franchise"><span><b>Une entreprise en franchise en base de TVA</b><small>Sa facture indique que la TVA n’est pas applicable</small></span></label>
+            <label class="opt"><input type="radio" name="d-from" value="general"><span><b>Une entreprise qui m’a facturé la TVA</b><small>La facture fait apparaître un montant de TVA</small></span></label>
+            <label class="opt"><input type="radio" name="d-from" value="other"><span><b>Autre cas</b><small>Une entreprise d’un autre pays, une vente aux enchères…</small></span></label>
+          </div>
+        </fieldset>
+      </div>
+      <div class="verdict" id="d-result" data-tone="idle" aria-live="polite">
+        <div class="verdict-head">
+        <div class="badge" aria-hidden="true">
+          <svg class="i b-idle"><use href="../../assets/icons.svg#info"/></svg>
+          <svg class="i b-yes"><use href="../../assets/icons.svg#check"/></svg>
+          <svg class="i b-no"><use href="../../assets/icons.svg#x-circle"/></svg>
+          <svg class="i b-maybe"><use href="../../assets/icons.svg#alert"/></svg>
+        </div>
+        <h3 id="d-title">Choisissez une réponse à chaque question</h3>
+        </div>
+        <p id="d-body">La réponse s’affiche ici, avec l’article sur lequel elle s’appuie.</p>
+        <p class="extra" id="d-opt" hidden></p>
+        <p class="fine">Un repère, pas une décision&nbsp;: les biens qui relèvent de la marge, vous en décidez avec votre expert-comptable.</p>
+      </div>
+    </form>
+    <noscript><p>L’outil a besoin de JavaScript. Les mêmes règles sont écrites plus bas.</p></noscript>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <article class="prose">
+        <h2 id="definition">Définition</h2>
+        <p>Pour un assujetti revendeur de biens d’occasion, d’œuvres d’art, d’objets de collection ou d’antiquité, la base de la TVA est <strong>la différence entre le prix de vente et le prix d’achat</strong>, et non le prix total (article 297 A, I, 1° du CGI). Concrètement&nbsp;:</p>
+        <ul>
+          <li><strong>la TVA porte sur la marge</strong>, qui la contient déjà&nbsp;: au taux normal, marge / 1,20 × 20&nbsp;%. <a href="../calcul-tva-sur-marge/">Le calcul pas à pas, avec des exemples</a>&nbsp;;</li>
+          <li><strong>la facture ne fait pas apparaître la TVA</strong> (article 297 E) et porte la mention «&nbsp;Régime particulier-Biens d’occasion&nbsp;». <a href="../facture-tva-sur-marge/">Modèle de facture</a>.</li>
+        </ul>
+
+        <h2 id="conditions">Les conditions</h2>
+        <p>Trois conditions, toutes dans l’article 297 A&nbsp;:</p>
+        <ol>
+          <li><strong>Être assujetti revendeur</strong>&nbsp;: un professionnel qui achète ces biens pour les revendre.</li>
+          <li><strong>Vendre un bien d’occasion</strong>, ou une œuvre d’art, un objet de collection ou d’antiquité.</li>
+          <li><strong>Que le bien vous ait été livré par un non-redevable de la TVA</strong>, ou par une personne qui n’était pas autorisée à facturer la TVA sur cette livraison. C’est le cas d’un particulier, ou d’un autre revendeur qui vous l’a vendu sous le régime de la marge (sa facture ne peut pas faire apparaître de TVA).</li>
+        </ol>
+        <p>Si votre vendeur vous a facturé la TVA sur cette vente, la troisième condition n’est pas remplie&nbsp;: le bien relève du régime normal, avec déduction de la TVA d’achat.</p>
+        <div class="note" role="note">
+          <svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#info"/></svg>
+          <div><p><strong>Gardez la preuve de chaque achat.</strong> C’est elle qui montre d’où vient la pièce et combien elle a coûté, surtout quand un particulier ne vous remet pas de facture. <a href="../facture-tva-sur-marge/#achats">Modèle de justificatif d’achat</a>.</p></div>
+        </div>
+
+        <h2 id="bien-occasion">Qu’est-ce qu’un bien d’occasion&nbsp;?</h2>
+        <p>Un bien meuble corporel <strong>susceptible de remploi, en l’état ou après réparation</strong>, autre qu’une œuvre d’art, un objet de collection ou d’antiquité, et autre que des métaux précieux ou des pierres précieuses (annexe III au CGI, article 98 A). Vêtements, téléphones, meubles, livres ou outils d’occasion, par exemple.</p>
+        <p>Les œuvres d’art, les objets de collection (timbres, collections d’intérêt historique ou numismatique…) et les objets d’antiquité (plus de cent ans) ont leur propre définition dans le même article et relèvent du même régime, avec leur mention sur la facture.</p>
+
+        <h2 id="globalisation">Pièce par pièce ou globalisation</h2>
+        <ul>
+          <li><strong>Pièce par pièce</strong>&nbsp;: chaque vente a sa marge. En cas de vente à perte, la base est nulle et ne s’impute pas sur les autres ventes (BOFiP BOI-TVA-SECT-90-20, §&nbsp;250).</li>
+          <li><strong>Globalisation</strong>&nbsp;: la base peut être déterminée sur l’ensemble de chaque période déclarée, par la différence entre le total des ventes et le total des achats. Si les achats dépassent les ventes, l’excédent s’ajoute aux achats de la période suivante&nbsp;; une régularisation des stocks a lieu chaque année (article 297 A, II). Pour savoir si elle vous convient et à quels biens, voyez avec votre expert-comptable.</li>
+        </ul>
+
+        <h2 id="obligations">Ce qu’il faut faire si vous l’appliquez</h2>
+        <ul>
+          <li><strong>Factures</strong> avec la mention et sans TVA apparente&nbsp;: <a href="../facture-tva-sur-marge/">modèle de facture</a>.</li>
+          <li><strong>Suivi séparé</strong> en comptabilité des opérations de chaque régime, par taux (BOFiP BOI-TVA-SECT-90-80)&nbsp;: la <a href="../calculatrice/">calculatrice</a> donne la base et la TVA du trimestre par taux, et un registre pièce par pièce.</li>
+        </ul>
+        <div class="note" role="note">
+          <svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#info"/></svg>
+          <div><p><strong>Les références changent le 1<sup>er</sup> janvier 2027.</strong> L’ordonnance n°&nbsp;2025-1247 transfère la TVA du CGI vers le code des impositions sur les biens et services. L’article 297 A est abrogé à cette date et ses règles reprises dans le nouveau code.</p></div>
+        </div>
+
+        <div class="note warn" role="note">
+          <svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#alert"/></svg>
+          <div><p><strong>Cette page explique la règle&nbsp;; ce n’est pas un conseil fiscal.</strong> Appliquer le régime, choisir les biens qui en relèvent et le déclarer relèvent de vous et de votre expert-comptable.</p></div>
+        </div>
+
+        <h2 id="questions">Questions fréquentes</h2>
+        <div class="faq">
+          <details>
+            <summary>Qu’est-ce que la TVA sur marge&nbsp;?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>Un régime particulier pour les assujettis revendeurs de biens d’occasion, d’œuvres d’art, d’objets de collection ou d’antiquité&nbsp;: la TVA est calculée sur la différence entre le prix de vente et le prix d’achat, et non sur le prix total (article 297 A du CGI). La facture ne fait pas apparaître la TVA (article 297 E).</p></div>
+          </details>
+          <details>
+            <summary>Quelles sont les conditions de la TVA sur marge&nbsp;?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>Être assujetti revendeur, vendre un bien d’occasion (ou une œuvre d’art, un objet de collection ou d’antiquité), et que ce bien vous ait été livré par un non-redevable de la TVA ou par une personne qui n’était pas autorisée à facturer la TVA sur cette livraison (article 297 A, I, 1° du CGI).</p></div>
+          </details>
+          <details>
+            <summary>Qu’est-ce qu’un bien d’occasion pour la TVA&nbsp;?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>Un bien meuble corporel susceptible de remploi, en l’état ou après réparation, autre qu’une œuvre d’art, un objet de collection ou d’antiquité, et autre que des métaux précieux ou des pierres précieuses (annexe III au CGI, article 98 A).</p></div>
+          </details>
+          <details>
+            <summary>Peut-on appliquer la TVA sur marge à un bien acheté avec de la TVA&nbsp;?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>Non, si le vendeur vous a facturé la TVA sur cette vente&nbsp;: la condition de l’article 297 A n’est pas remplie. Le bien relève alors du régime normal, avec déduction de la TVA d’achat.</p></div>
+          </details>
+          <details>
+            <summary>Qu’est-ce que la globalisation de la TVA sur marge&nbsp;?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>Le calcul de la base sur l’ensemble d’une période, par la différence entre le total des ventes et le total des achats. Si les achats dépassent les ventes, l’excédent s’ajoute aux achats de la période suivante, et une régularisation des stocks a lieu chaque année (article 297 A, II du CGI).</p></div>
+          </details>
+        </div>
+
+        <h2 id="boutique">Vous vendez en ligne&nbsp;?</h2>
+        <p>Si votre boutique tourne sous PrestaShop, le <a href="../#guide">guide pas à pas</a> explique comment la configurer pour le régime de la marge avec ce qu’elle propose déjà. Avec toute autre boutique, la <a href="../calculatrice/">calculatrice</a> donne la base du trimestre et le registre à partir d’un fichier de ventes.</p>
+        <p class="muted">Sources&nbsp;: CGI, articles 297 A (version en vigueur depuis le 1<sup>er</sup> janvier 2025) et 297 E&nbsp;; annexe III au CGI, article 98 A&nbsp;; BOFiP BOI-TVA-SECT-90-20 et BOI-TVA-SECT-90-80&nbsp;; ordonnance n°&nbsp;2025-1247. Vérifié sur Légifrance le 9 octobre 2026.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="modulo" aria-labelledby="modulo-t" hidden>
+    <div class="wrap">
+      <div class="waitlist">
+        <div>
+          <h2 id="modulo-t">Et si votre boutique le faisait toute seule&nbsp;?</h2>
+          <p>Nous mesurons l’intérêt pour un outil pour votre boutique en ligne qui distingue les pièces sous le régime de la marge, calcule la marge de chaque vente et établisse les factures sans bricolage. Dites-nous avec quoi vous vendez&nbsp;: nous le ferons pour la plateforme la plus demandée.</p>
+          <a class="btn" id="waitlist-link" href="#" rel="noopener">Prévenez-moi à sa sortie <svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#arrow-right"/></svg></a>
+          <small>Seuls l’e-mail et votre outil de vente sont obligatoires&nbsp;: ils servent à vous prévenir une fois, et sont supprimés si l’outil ne voit pas le jour. Responsable&nbsp;: Rubén Blánquez. Pour les supprimer avant, revenez au formulaire et choisissez «&nbsp;Supprimer mes données&nbsp;». Le formulaire utilise Google Forms.</small>
+        </div>
+        <ul>
+          <li><svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#check"/></svg>Chaque pièce classée marge ou régime normal, avec son prix d’achat.</li>
+          <li><svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#check"/></svg>Des factures sur marge correctes, sans TVA apparente ni colonne «&nbsp;0&nbsp;%&nbsp;».</li>
+          <li><svg class="i" aria-hidden="true"><use href="../../assets/icons.svg#check"/></svg>Le registre et le récapitulatif du trimestre, sans rien exporter.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p class="disclaimer">Outil de calcul et de documentation. Ce n’est pas un conseil fiscal&nbsp;: l’application du régime et la vérification des montants relèvent du commerçant et de son expert-comptable.</p>
+      <p>Ni cookies ni mesure d’audience. Réalisé par lanabes. Dernière révision&nbsp;: 9 octobre 2026.</p>
+    </div>
+    <nav aria-label="Pied de page">
+      <a href="./">Le régime de la marge</a>
+      <a href="../facture-tva-sur-marge/">Facture TVA sur marge</a>
+      <a href="../calcul-tva-sur-marge/">Calcul et exemples</a>
+      <a href="../#guide">Guide PrestaShop</a>
+      <a href="../calculatrice/">Calculatrice</a>
+      <a href="../../regimen-bienes-usados/" hreflang="es" lang="es">Versión en español</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../../assets/config.js"></script>
+<script type="module" src="../../assets/decide.js"></script>
+<script type="module" src="../../assets/waitlist.js"></script>
+</body>
+</html>

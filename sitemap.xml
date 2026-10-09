@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lanabes.github.io/rebu-prestashop/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://lanabes.github.io/rebu-prestashop/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://lanabes.github.io/rebu-prestashop/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lanabes.github.io/rebu-prestashop/"/>
   </url>
   <url>
     <loc>https://lanabes.github.io/rebu-prestashop/fr/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <xhtml:link rel="alternate" hreflang="es" href="https://lanabes.github.io/rebu-prestashop/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://lanabes.github.io/rebu-prestashop/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://lanabes.github.io/rebu-prestashop/"/>
@@ -55,5 +55,19 @@
   <url>
     <loc>https://lanabes.github.io/rebu-prestashop/libro-registro-rebu/</loc>
     <lastmod>2026-10-03</lastmod>
+  </url>
+  <url>
+    <loc>https://lanabes.github.io/rebu-prestashop/regimen-bienes-usados/</loc>
+    <lastmod>2026-10-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://lanabes.github.io/rebu-prestashop/regimen-bienes-usados/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lanabes.github.io/rebu-prestashop/fr/regime-de-la-marge/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lanabes.github.io/rebu-prestashop/regimen-bienes-usados/"/>
+  </url>
+  <url>
+    <loc>https://lanabes.github.io/rebu-prestashop/fr/regime-de-la-marge/</loc>
+    <lastmod>2026-10-09</lastmod>
+    <xhtml:link rel="alternate" hreflang="es" href="https://lanabes.github.io/rebu-prestashop/regimen-bienes-usados/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://lanabes.github.io/rebu-prestashop/fr/regime-de-la-marge/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lanabes.github.io/rebu-prestashop/regimen-bienes-usados/"/>
   </url>
 </urlset>
