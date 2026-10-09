@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Calcul de la TVA sur marge : formule et exemples</title>
-<meta name="description" content="Comment calculer la TVA sur marge des biens d’occasion pas à pas : la formule, des exemples avec marge positive et négative, un trimestre complet et le coefficient 0,833 du BOFiP. Testez le calcul avec vos montants.">
+<meta name="description" content="Comment calculer la TVA sur marge des biens d’occasion pas à pas : la formule, des exemples avec marge positive et négative, un trimestre complet et le tableau des coefficients (0,833 à 20 %). Simulateur pour tester vos montants.">
 <link rel="canonical" href="https://lanabes.github.io/rebu-prestashop/fr/calcul-tva-sur-marge/">
 <link rel="alternate" hreflang="fr" href="https://lanabes.github.io/rebu-prestashop/fr/calcul-tva-sur-marge/">
 <link rel="alternate" hreflang="es" href="https://lanabes.github.io/rebu-prestashop/iva-rebu-ejemplo/">
@@ -33,7 +33,7 @@
       "inLanguage": "fr",
       "url": "https://lanabes.github.io/rebu-prestashop/fr/calcul-tva-sur-marge/",
       "datePublished": "2026-10-03",
-      "dateModified": "2026-10-03",
+      "dateModified": "2026-10-09",
       "author": { "@type": "Organization", "name": "lanabes" },
       "about": ["Régime de la marge", "TVA", "Biens d’occasion"]
     },
@@ -44,7 +44,8 @@
         { "@type": "Question", "name": "Quelle est la formule de la TVA sur marge ?", "acceptedAnswer": { "@type": "Answer", "text": "TVA = (prix de vente − prix d’achat) / (1 + taux) × taux. Au taux normal de 20 %, cela revient à (vente − achat) / 1,20 × 20 %, soit un sixième de la marge TTC." } },
         { "@type": "Question", "name": "La marge se calcule-t-elle TTC ou HT ?", "acceptedAnswer": { "@type": "Answer", "text": "La marge se calcule d’abord TTC : prix de vente TVA comprise moins prix d’achat. On en retire ensuite la TVA qu’elle contient pour obtenir la base HT, sur laquelle on applique le taux." } },
         { "@type": "Question", "name": "Que se passe-t-il en cas de marge négative ?", "acceptedAnswer": { "@type": "Answer", "text": "En cas de vente à perte, la base est nulle : il n’y a pas de TVA sur cette vente. Cette perte ne s’impute pas sur les autres ventes (BOFiP BOI-TVA-SECT-90-20, § 250)." } },
-        { "@type": "Question", "name": "Pourquoi le BOFiP parle-t-il d’un coefficient de 0,833 ?", "acceptedAnswer": { "@type": "Answer", "text": "Diviser par 1,20 revient à multiplier par 0,8333… Le BOFiP (BOI-TVA-SECT-90-20, § 290) ramène la marge hors taxe avec le coefficient arrondi 0,833 ; l’écart avec la division exacte est de quelques centimes au plus." } }
+        { "@type": "Question", "name": "Pourquoi le BOFiP parle-t-il d’un coefficient de 0,833 ?", "acceptedAnswer": { "@type": "Answer", "text": "Diviser par 1,20 revient à multiplier par 0,8333… Le BOFiP (BOI-TVA-SECT-90-20, § 290) ramène la marge hors taxe avec le coefficient arrondi 0,833 ; l’écart avec la division exacte est de quelques centimes au plus." } },
+        { "@type": "Question", "name": "Quel coefficient pour la TVA sur marge à 20 % ?", "acceptedAnswer": { "@type": "Answer", "text": "Multipliez la marge TTC par 0,8333 pour obtenir la base HT (le BOFiP retient 0,833), ou par 0,1667 pour obtenir directement la TVA. À 10 % : 0,9091 et 0,0909. À 5,5 % : 0,9479 et 0,0521." } }
       ]
     }
   ]
@@ -141,6 +142,21 @@
           <div><p><strong>L’erreur la plus courante&nbsp;: appliquer 20&nbsp;% directement à la marge.</strong> Avec 150&nbsp;€ de marge, on obtient 30,00&nbsp;€ au lieu de 25,00&nbsp;€&nbsp;: c’est calculer de la TVA aussi sur la TVA que la marge contient déjà.</p></div>
         </div>
 
+        <h2 id="coefficients">Tableau des coefficients de conversion</h2>
+        <p>Pour aller plus vite, on multiplie la marge TTC par un coefficient au lieu de diviser&nbsp;: base HT = marge TTC × coef. base HT, et TVA à déclarer = marge TTC × coef. TVA.</p>
+        <div class="table-wrap">
+          <table class="data">
+            <caption class="sr-only">Coefficients de conversion de la marge TTC selon le taux</caption>
+            <thead><tr><th scope="col">Taux</th><th scope="col" class="r">Coef. base HT</th><th scope="col" class="r">Coef. TVA</th><th scope="col" class="r opt">Pour 150&nbsp;€ de marge</th></tr></thead>
+            <tbody>
+              <tr><td>20&nbsp;%</td><td class="r">0,8333</td><td class="r">0,1667</td><td class="r opt">125,00&nbsp;€ · TVA 25,00&nbsp;€</td></tr>
+              <tr><td>10&nbsp;%</td><td class="r">0,9091</td><td class="r">0,0909</td><td class="r opt">136,36&nbsp;€ · TVA 13,64&nbsp;€</td></tr>
+              <tr><td>5,5&nbsp;%</td><td class="r">0,9479</td><td class="r">0,0521</td><td class="r opt">142,18&nbsp;€ · TVA 7,82&nbsp;€</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Les coefficients sont 100&nbsp;/&nbsp;(100&nbsp;+&nbsp;taux) et taux&nbsp;/&nbsp;(100&nbsp;+&nbsp;taux), arrondis à quatre décimales. Au taux normal, le BOFiP retient 0,833 (BOI-TVA-SECT-90-20, §&nbsp;290)&nbsp;; les autres valeurs sont le calcul exact, pas un barème officiel. Les montants de la dernière colonne sont calculés sans arrondir le coefficient, comme dans la calculatrice.</p>
+
         <h2 id="exemple-1">Exemple 1&nbsp;: une pièce avec marge</h2>
         <p>Vous achetez un appareil photo 300&nbsp;€ à un particulier et le revendez 450&nbsp;€, au taux normal de 20&nbsp;%.</p>
         <dl class="example" aria-label="Exemple au taux de 20&nbsp;%">
@@ -223,6 +239,10 @@
             <summary>Pourquoi le BOFiP parle-t-il d’un coefficient de 0,833&nbsp;?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
             <div class="a"><p>Diviser par 1,20 revient à multiplier par 0,8333… Le BOFiP (BOI-TVA-SECT-90-20, §&nbsp;290) ramène la marge hors taxe avec le coefficient arrondi 0,833&nbsp;; l’écart avec la division exacte est de quelques centimes au plus.</p></div>
           </details>
+          <details>
+            <summary>Quel coefficient pour la TVA sur marge à 20&nbsp;%&nbsp;?<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+            <div class="a"><p>Multipliez la marge TTC par 0,8333 pour obtenir la base HT (le BOFiP retient 0,833), ou par 0,1667 pour obtenir directement la TVA. À 10&nbsp;%&nbsp;: 0,9091 et 0,0909. À 5,5&nbsp;%&nbsp;: 0,9479 et 0,0521.</p></div>
+          </details>
         </div>
 
         <h2 id="boutique">Vous vendez en ligne&nbsp;?</h2>
@@ -255,7 +275,7 @@
   <div class="wrap">
     <div>
       <p class="disclaimer">Outil de calcul et de documentation. Ce n’est pas un conseil fiscal&nbsp;: l’application du régime et la vérification des montants relèvent du commerçant et de son expert-comptable.</p>
-      <p>Ni cookies ni mesure d’audience. Réalisé par lanabes. Dernière révision&nbsp;: 3 octobre 2026.</p>
+      <p>Ni cookies ni mesure d’audience. Réalisé par lanabes. Dernière révision&nbsp;: 9 octobre 2026.</p>
     </div>
     <nav aria-label="Pied de page">
       <a href="../facture-tva-sur-marge/">Facture TVA sur marge</a>
